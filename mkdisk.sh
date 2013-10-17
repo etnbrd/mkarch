@@ -71,8 +71,8 @@ do
   echo "-------"
   echo ""
   echo -e "$DISK_DEVICE"
-  echo -e "   root \t$ROOT_SIZE G"
-  echo -e "   home \t$HOME_SIZE G"
+  echo -e "   root \t${ROOT_SIZE}G"
+  echo -e "   home \t${HOME_SIZE}G"
   echo ""
 
   while true; do
@@ -98,10 +98,9 @@ done
 #####################################################
 # COMMANDS                                          #
 #####################################################
-
-parted -s $DISK_DEVICE mklabel gpt;
-parted -s $DISK_DEVICE unit GB mkpart 0          $ROOT_SIZE name root set boot on set root on;
-parted -s $DISK_DEVICE unti GB mkpart $ROOT_SIZE $HOME_SIZE name home;
+parted -s $DISK_DEVICE mktable gpt;
+parted -s $DISK_DEVICE unit GB mkpart 0          $ROOT_SIZE name 1 root set 1 boot on;
+parted -s $DISK_DEVICE unti GB mkpart $ROOT_SIZE $HOME_SIZE name 1 home;
 
 # parted -s $DISK_DEVICE name 1 root;
 # parted -s $DISK_DEVICE name 2 home;
