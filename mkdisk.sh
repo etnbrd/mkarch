@@ -98,12 +98,7 @@ done
 #####################################################
 # COMMANDS                                          #
 #####################################################
-parted -s $DISK_DEVICE mktable gpt;
-parted -s $DISK_DEVICE unit GB mkpart primary 0          $ROOT_SIZE name 1 root set 1 boot on;
-parted -s $DISK_DEVICE unti GB mkpart primary $ROOT_SIZE $HOME_SIZE name 1 home;
 
-# parted -s $DISK_DEVICE name 1 root;
-# parted -s $DISK_DEVICE name 2 home;
-
-# parted -s $DISK_DEVICE set 1 boot on;
-# parted -s $DISK_DEVICE set 1 root on;
+sgdisk -o $DISK_DEVICE                                        # Clear partition
+sgdisk -n 1:2048:$ROOT_SIZE -c 1:'root' $DISK_DEVICE          # Create root partition
+sgdisk -N 2 -c 2:'home' $DISK_DEVICE                          # Create home partition
