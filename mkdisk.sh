@@ -76,7 +76,7 @@ do
   echo ""
 
   while true; do
-      echo "Good ? [y/n]"
+      echo "Good ? [yes/no]"
       read yn
       case $yn in
           [Yy]* ) yn=yes; break;;
@@ -99,8 +99,8 @@ done
 # COMMANDS                                          #
 #####################################################
 parted -s $DISK_DEVICE mktable gpt;
-parted -s $DISK_DEVICE unit GB mkpart 0          $ROOT_SIZE name 1 root set 1 boot on;
-parted -s $DISK_DEVICE unti GB mkpart $ROOT_SIZE $HOME_SIZE name 1 home;
+parted -s $DISK_DEVICE unit GB mkpart primary 0          $ROOT_SIZE name 1 root set 1 boot on;
+parted -s $DISK_DEVICE unti GB mkpart primary $ROOT_SIZE $HOME_SIZE name 1 home;
 
 # parted -s $DISK_DEVICE name 1 root;
 # parted -s $DISK_DEVICE name 2 home;
