@@ -3,11 +3,21 @@
 # mkdisk.sh by etnbrd
 # This script prepare the disks
 
-DISK_DEVICE=/dev/vda
-ROOT_SIZE=5G
-HOME_SIZE=10G
+#####################################################
+# DEFAULT                                           #
+#####################################################
+
+Init() {
+  DISK_DEVICE=/dev/vda
+  ROOT_SIZE=5G
+  HOME_SIZE=10G
+}
 
 # TODO prompt a config file with the different variables, like arch-srv.sh and arch-dev.sh
+
+#####################################################
+# UTILS                                             #
+#####################################################
 
 Ask() {
   while true
@@ -26,6 +36,12 @@ Ask() {
     fi
   done
 }
+
+#####################################################
+# PROMPT                                            #
+#####################################################
+
+Init
 
 while true
 do
@@ -47,16 +63,16 @@ do
   parted -s $DISK_DEVICE print;
   echo "";
 
-  Ask "Root Partition Size ?" ROOT_SIZE;
-  Ask "Home Partition Size ?" HOME_SIZE;
+  Ask "Root Partition Size (GB)?" ROOT_SIZE;
+  Ask "Home Partition Size (GB)?" HOME_SIZE;
 
   echo ""
   echo "Summary"
   echo "-------"
   echo ""
-  echo -e "disk : \t\t$DISK_DEVICE"
-  echo -e "root : \t\t$ROOT_SIZE"
-  echo -e "home : \t\t$HOME_SIZE"
+  echo -e "$DISK_DEVICE"
+  echo -e "\t root \t$ROOT_SIZE"
+  echo -e "\t home \t$HOME_SIZE"
   echo ""
 
   while true; do
@@ -73,13 +89,22 @@ do
     then break;
   elif [ $yn = no ]
     then 
-      DISK_DEVICE=;
-      ROOT_SIZE=;
-      HOME_SIZE=;
-      echo "";
+      Init
+      echo;
       continue;
   fi
 done
 
+#####################################################
+# COMMANDS                                          #
+#####################################################
 
+parted -s $DISK_DEVICE mklabel gpt;
+parted -s $DISK_DEVICE unit GB mkpart 0          $ROOT_SIZE name root set boot on set root on;
+parted -s $DISK_DEVICE unti GB mkpart $ROOT_SIZE $HOME_SIZE name home;
 
+# parted -s $DISK_DEVICE name 1 root;
+# parted -s $DISK_DEVICE name 2 home;
+
+# parted -s $DISK_DEVICE set 1 boot on;
+# parted -s $DISK_DEVICE set 1 root on;
