@@ -3,26 +3,38 @@
 # mkdisk.sh by etnbrd
 # This script prepare the disks
 
-DISK_DEVICE=/dev/sda
+DISK_DEVICE=/dev/vda
+ROOT_SIZE=5G
+HOME_SIZE=10G
+
+# TODO prompt a config file with the different variables, like arch-srv.sh and arch-dev.sh
 
 Ask() {
-  if [ -z ${!2} ]; then
-    echo $1;
-  else 
-    echo $1 [${!2}];
-  fi
-  read tmp;
-  if [[ -e $tmp || -e ${!2} ]]; then
-    eval "$2=$tmp";
-  fi
+  while true
+  do
+    if [[ -z ${!2} ]]; then
+      echo -n "$1 ";
+    else 
+      echo -n "$1 [${!2}] ";
+    fi
+    read tmp;
+    if [[ -n $tmp ]]; then
+      eval "$2=$tmp";
+    fi
+    echo ${!2}
+    if [[ -n ${!2} ]]; then
+      break;
+    fi
+  done
 }
 
 while true
 do
-  lsblk
+  echo lsblk
   echo "";
   Ask "Disk device ?" DISK_DEVICE;
-  if [[ -z $DISK_DEVICE && -w $DISK_DEVICE ]]
+
+  if [[ -n $DISK_DEVICE && -w $DISK_DEVICE ]]
     then break;
   else
     echo "$DISK_DEVICE doesn't exist, or you don't have the permissions to write."
@@ -33,7 +45,7 @@ done
 
 while true
 do
-  # parted -s $DISK_DEVICE print;
+  echo parted -s $DISK_DEVICE print;
 
   Ask "Root Partition Size ?" ROOT_SIZE;
   Ask "Home Partition Size ?" HOME_SIZE;
