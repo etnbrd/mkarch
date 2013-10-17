@@ -3,22 +3,29 @@
 # mkdisk.sh by etnbrd
 # This script prepare the disks
 
+DISK_DEVICE=/dev/sda
+
 Ask() {
-  if [ -z ${!2} ]
-    then
+  if [ -z ${!2} ]; then
     echo $1;
-    read tmp;
-    eval "$2=$tmp"
+  else 
+    echo $1 [${!2}];
+  fi
+  read tmp;
+  if [[ -e $tmp || -e ${!2} ]]; then
+    eval "$2=$tmp";
   fi
 }
 
 while true
 do
+  lsblk
+  echo "";
   Ask "Disk device ?" DISK_DEVICE;
-  if [ -w $DISK_DEVICE ]
+  if [[ -z $DISK_DEVICE && -w $DISK_DEVICE ]]
     then break;
   else
-    echo "device doesn't exist, or you don't have the permissions to write."
+    echo "$DISK_DEVICE doesn't exist, or you don't have the permissions to write."
     DISK_DEVICE="";
     continue
   fi
@@ -26,7 +33,7 @@ done
 
 while true
 do
-  parted -s $DISK_DEVICE print;
+  # parted -s $DISK_DEVICE print;
 
   Ask "Root Partition Size ?" ROOT_SIZE;
   Ask "Home Partition Size ?" HOME_SIZE;
@@ -41,7 +48,8 @@ do
   echo ""
 
   while true; do
-      read -p "Good ? [y/n]" yn
+      echo "Good ? [y/n]"
+      read yn
       case $yn in
           [Yy]* ) yn=yes; break;;
           [Nn]* ) yn=no; break;;
