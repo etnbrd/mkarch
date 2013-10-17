@@ -38,7 +38,7 @@ do
     then break;
   else
     echo "$DISK_DEVICE doesn't exist, or you don't have the permissions to write."
-    DISK_DEVICE="";
+    DISK_DEVICE=;
     continue
   fi
 done
@@ -70,12 +70,12 @@ do
   done
 
   if [ $yn = yes ]
-    then echo "ok--"; break;
+    then break;
   elif [ $yn = no ]
     then 
-      DISK_DEVICE="";
-      ROOT_SIZE="";
-      HOME_SIZE="";
+      DISK_DEVICE=;
+      ROOT_SIZE=;
+      HOME_SIZE=;
       echo "";
       continue;
   fi
