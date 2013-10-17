@@ -21,7 +21,6 @@ Ask() {
     if [[ -n $tmp ]]; then
       eval "$2=$tmp";
     fi
-    echo ${!2}
     if [[ -n ${!2} ]]; then
       break;
     fi
@@ -30,7 +29,7 @@ Ask() {
 
 while true
 do
-  echo lsblk
+  lsblk
   echo "";
   Ask "Disk device ?" DISK_DEVICE;
 
@@ -45,7 +44,8 @@ done
 
 while true
 do
-  echo parted -s $DISK_DEVICE print;
+  parted -s $DISK_DEVICE print;
+  echo "";
 
   Ask "Root Partition Size ?" ROOT_SIZE;
   Ask "Home Partition Size ?" HOME_SIZE;
@@ -54,7 +54,7 @@ do
   echo "Summary"
   echo "-------"
   echo ""
-  echo -e "Install on : \t$DISK_DEVICE"
+  echo -e "disk : \t\t$DISK_DEVICE"
   echo -e "root : \t\t$ROOT_SIZE"
   echo -e "home : \t\t$HOME_SIZE"
   echo ""
