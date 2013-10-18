@@ -75,9 +75,16 @@ Error $? "$ER ressource not available" "$IF ressources available";
 # wuiet wget https://raw.github.com/gravitezero/mkarch/master/utils.sh -O - | source;
 
 Ask "Host ?" HOST;
+echo --------------------------
+
 Ask "Make disk ?" MKDISK;
+echo --------------------------
+
 Ask "Make part ?" MKPART;
+echo --------------------------
+
 Ask "Make base ?" MKBASE;
+echo --------------------------
 
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOST/init.sh;
 Error $? "$ER hosts/$HOST/init.sh doesn't exist";
