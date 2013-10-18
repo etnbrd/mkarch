@@ -74,10 +74,10 @@ Error() {
 # COMMANDS                                          #
 #####################################################
 
-`mkfs.$ROOT_FS $PART_ROOT -L root`;
+mkfs.`$ROOT_FS` $PART_ROOT -L root;
 Error $? "$ER Error${Rst}: couldn't create root filesystem" "$IF root filesystem created"
 
 if [[ $HOME_FS != false ]]; then
-  `mkfs.$HOME_FS $PART_HOME -L home`;
+  mkfs.`$HOME_FS` $PART_HOME -L home;
   Error $? "$ER Error${Rst}: couldn't create home filesystem" "$IF home filesystem created"
 fi
