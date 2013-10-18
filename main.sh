@@ -90,7 +90,7 @@ Init;
 
 if [[ $MKDISK = true ]]; then
   echo -e "$IF Making disk"
-  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh > tmp/mkdisk.sh;
+  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - > tmp/mkdisk.sh;
   chmod +x tmp/mkdisk.sh;
   . ./tmp/mkdisk.sh;
 fi
