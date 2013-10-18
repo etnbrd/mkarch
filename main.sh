@@ -35,7 +35,6 @@ Ask() {
     else
       break;
     fi
-    tmp="";
     read tmp;
     if [[ -n $tmp ]]; then
       eval "$2=$tmp";
@@ -74,10 +73,10 @@ quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkpart.sh &
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkbase.sh;
 Error $? "$ER ressource not available" "$IF ressources available";
 
-Ask "Host ?" HOSTNAME;
-Ask "Make disk ?" MKDISK;
-Ask "Make part ?" MKPART;
-Ask "Make base ?" MKBASE;
+Ask "Host ?" HOSTNAME
+Ask "Make disk ?" MKDISK
+Ask "Make part ?" MKPART
+Ask "Make base ?" MKBASE
 
 # quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOST/init.sh;
 # Error $? "$ER hosts/$HOST/init.sh doesn't exist";
