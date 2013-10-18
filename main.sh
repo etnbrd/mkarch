@@ -83,18 +83,17 @@ Error $? "$ER hosts/$HOST/init.sh doesn't exist";
 
 mkdir -p tmp;
 wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - > tmp/init.sh;
-chmod +x tmp/init.sh;
+chmod +x ./tmp/init.sh;
 
-source tmp/init.sh;
+source ./tmp/init.sh;
+Init;
 
-echo $ROOT_SIZE;
-
-# if [[ $MKDISK = true ]]; then
-#   echo -e "$IF Making disk"
-#   wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh > tmp/mkdisk.sh;
-#   chmod +x tmp/mkdisk.sh;
-#   ./tmp/mkdisk.sh;
-# fi
+if [[ $MKDISK = true ]]; then
+  echo -e "$IF Making disk"
+  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh > tmp/mkdisk.sh;
+  chmod +x tmp/mkdisk.sh;
+  . ./tmp/mkdisk.sh;
+fi
 # if [[ $MKPART = true ]]; then
 #   echo -e "$IF Making part"
 #   wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
