@@ -74,8 +74,9 @@ quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkbase.sh;
 Error $? "$ER ressource not available" "$IF ressources available";
 
 
-Ask "Host ?" HOST
-# echo "--------------------------";
+Ask "Host ?" HOST;
+
+
 
 # Ask "Make disk ?" MKDISK
 # echo "--------------------------";
