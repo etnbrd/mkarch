@@ -101,8 +101,8 @@ do
     echo -e "${Rst}";
   fi
 
-  Ask "Root Partition Size (GB)?" ROOT_SIZE;
-  Ask "Home Partition Size (GB)?" HOME_SIZE;
+  Ask "Root Partition Size ?" ROOT_SIZE;
+  Ask "Home Partition Size ?" HOME_SIZE;
 
   echo -e "${BIWhi}"
   echo -e "$IF $DISK_DEVICE"
