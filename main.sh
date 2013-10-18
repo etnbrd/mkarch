@@ -83,12 +83,12 @@ Error $? "$ER hosts/$HOST/init.sh doesn't exist";
 
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - | sh;
 
-if [[ MKDISK = true ]]; then
+if [[ $MKDISK = true ]]; then
   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - | sh;
 fi
-if [[ MKPART = true ]]; then
+if [[ $MKPART = true ]]; then
   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
 fi
-if [[ MKBASE = true ]]; then
+if [[ $MKBASE = true ]]; then
   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - | sh;
 fi
