@@ -87,6 +87,8 @@ chmod +x tmp/init.sh;
 
 source tmp/init.sh;
 
+echo $ROOT_SIZE;
+
 # if [[ $MKDISK = true ]]; then
 #   echo -e "$IF Making disk"
 #   wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh > tmp/mkdisk.sh;
