@@ -70,7 +70,7 @@ Error() {
   fi
 }
 
-alias -g quiet='> /dev/null 2>&1';
+alias quiet='> /dev/null 2>&1';
 
 #####################################################
 # PROMPT                                            #
