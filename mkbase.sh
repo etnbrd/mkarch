@@ -3,43 +3,76 @@
 # mkbase.sh by etnbrd
 # This script install the base system
 
-MNT="/mnt"
-BOOTLOADER="grub"
-BASE="base"
-HOSTNAME="arch-srv"
-LOCALZONE="Europe/Paris"
-PWD="password"
+#####################################################
+# PROMPT                                            #
+#####################################################
 
-# TODO make a utils.sh, and a makefile (or grunt) to concat these files together
-Ask() {
-  if [ -z ${!2} ]; then
-    echo $1;
-  else 
-    echo $1 [${!2}];
+Init
+
+while true
+do
+
+  Ask "Bootloader ?" BOOTLOADER
+  Ask "Packages to install ?" BASE
+  Ask "Hostname ?" HOSTNAME
+  Ask "Time zone ?" LOCALZONE
+
+  echo -e "${BIWhi}"
+  echo -e "$IF $DISK_DEVICE"
+  echo -e "${BIWhi}   Base Packages \t${BIYel}$BASE"
+  echo -e "${BIWhi}   Hostname \t${BIYel}$HOSTNAME"
+  echo -e "${BIWhi}   Time zone \t${BIYel}$LOCALZONE"
+  echo -e "${Rst}"
+
+  yn=yes;
+  while [[ $ASK = true ]]; do
+      echo -ne "$PR Continue ? ${Rst}[${IBla}yes/no${Rst}] "
+      read yn
+      case $yn in
+          [Yy]* ) yn=yes; break;;
+          [Nn]* ) yn=no; break;;
+          * ) echo "Please answer yes or no.";;
+      esac
+  done
+
+  if [ $yn = yes ]
+    then break;
+  elif [ $yn = no ]
+    then 
+      Init
+      echo;
+      continue;
   fi
-  read tmp;
-  if [[ -e $tmp || -e ${!2} ]]; then
-    eval "$2=$tmp";
-  fi
-}
+done
 
-Ask "Mount point ?" MNT
-Ask "Bootloader ?" BOOTLOADER
-Ask "Packages to install ?" BASE
-Ask "Hostname ?" HOSTNAME
-Ask "Time zone ?" LOCALZONE
-Ask "Root passwd ?" PWD
+#####################################################
+# COMMANDS                                          #
+#####################################################
 
-pacstrap $MNT "$BASE" $BOOTLOADER
-genfstab -U -p $MNT >> $MNT/etc/fstab
+mount $DISK_DEVICE1 /mnt &&
+mkdir -p /mnt/home &&
+mount $DISK_DEVICE2 /mnt/home;
+Error $? "$ER Failed to mount partitions" "$IF Partitions mounted";
 
-arch-chroot $MNT << EOF
-echo $HOSTNAME >> /etc/hostname
+pacstrap /mnt "$BASE";
+Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF Basecamp established, starting campfire :)"
+
+genfstab -U -p /mnt >> /mnt/etc/fstab
+
+
+echo "${BIGre}>> Success, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)"
+
+# arch-chroot $MNT << EOF
+# echo $HOSTNAME >> /etc/hostname
+# ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
+# locale-gen
+
+
 # TODO make an etc/vconsole.conf and echo it
 # echo  >> /etc/vconsole.conf
-ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
-locale-gen
-mkinitcpio -p linux
+
+
+# mkinitcpio -p linux
 # TODO do the bootloader
 # TODO do the root password
 
