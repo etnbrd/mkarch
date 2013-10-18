@@ -81,11 +81,15 @@ Ask "Make base ?" MKBASE
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh;
 Error $? "$ER hosts/$HOST/init.sh doesn't exist";
 
-quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - | sh;
+mkdir -p tmp;
+wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh > tmp/init.sh;
+chmod +x tmp/init.sh;
 
 if [[ $MKDISK = true ]]; then
   echo -e "$IF Making disk"
-  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - | sh;
+  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh > tmp/mkdisk.sh;
+  chmod +x tmp/mkdisk.sh;
+  ./tmp/mkdisk.sh;
 fi
 if [[ $MKPART = true ]]; then
   echo -e "$IF Making part"
