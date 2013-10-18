@@ -20,16 +20,6 @@ Init() {
 # UTILS                                             #
 #####################################################
 
-# Rst="\033[0m";
-
-# Red="\033[33;31m";
-# Gre="\033[33;32m";
-# Yel="\033[33;33m";
-# Blu="\033[33;34m";
-# Mag="\033[33;35m";
-# Gra="\033[33;30m";
-# Cya="\033[33;36m";
-
 Rst='\033[0m'    # Text Reset
 
 # Regular             Bold                  Underline             High Intensity        BoldHigh Intens       Background            High Intensity Backgrounds
@@ -110,7 +100,7 @@ do
 
   yn=yes;
   while [[ $ASK = true ]]; do
-      echo "$PR Continue ? ${Rst}[${IBla}yes/no${Rst}] "
+      echo -e "$PR Continue ? ${Rst}[${IBla}yes/no${Rst}] "
       read yn
       case $yn in
           [Yy]* ) yn=yes; break;;
