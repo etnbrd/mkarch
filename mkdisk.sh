@@ -25,7 +25,7 @@ Ask() {
   do
     if [[ -z ${!2} ]]; then
       echo -n "$1 ";
-    elif [[ $ASK ]]; then
+    elif [[ $ASK = true ]]; then
       echo -n "$1 [${!2}] ";
     else
       break;
@@ -74,8 +74,8 @@ do
   echo "-------"
   echo ""
   echo -e "$DISK_DEVICE"
-  echo -e "   root \tROOT_SIZE"
-  echo -e "   home \tHOME_SIZE"
+  echo -e "   root \t$ROOT_SIZE"
+  echo -e "   home \t$HOME_SIZE"
   echo ""
 
   while true; do
