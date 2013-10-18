@@ -84,11 +84,14 @@ Error $? "$ER hosts/$HOST/init.sh doesn't exist";
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - | sh;
 
 if [[ $MKDISK = true ]]; then
+  echo "$IF Making disk"
   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - | sh;
 fi
 if [[ $MKPART = true ]]; then
+  echo "$IF Making part"
   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
 fi
 if [[ $MKBASE = true ]]; then
+  echo "$IF Making base"
   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - | sh;
 fi
