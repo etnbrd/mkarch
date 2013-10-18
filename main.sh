@@ -79,7 +79,7 @@ Ask "Make part ?" MKPART
 Ask "Make base ?" MKBASE
 
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh;
-Error $? "$ER hosts/$HOST/init.sh doesn't exist";
+Error $? "$ER hosts/${HOSTNAME}/init.sh doesn't exist";
 
 mkdir -p tmp;
 wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - > tmp/init.sh 2> /dev/null;
