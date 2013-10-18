@@ -70,7 +70,7 @@ MKBASE=true;
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh &&
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkpart.sh &&
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkbase.sh;
-Error $? "$ER ressource not available";
+Error $? "$ER ressource not available" "$IF ressources available";
 
 # wuiet wget https://raw.github.com/gravitezero/mkarch/master/utils.sh -O - | source;
 
