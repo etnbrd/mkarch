@@ -76,4 +76,3 @@ Error $? "$ER ressource not available" "$IF ressources available";
 
 Ask "Host ?" HOST;
 
-exit;
