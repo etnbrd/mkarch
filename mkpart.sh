@@ -70,6 +70,7 @@ Error() {
   fi
 }
 
+quiet="> /dev/null 2>&1";
 
 #####################################################
 # PROMPT                                            #
@@ -114,10 +115,10 @@ done
 # COMMANDS                                          #
 #####################################################
 
-mkfs.$ROOT_FS ${DISK_DEVICE}1 -L root;
+mkfs.$ROOT_FS ${DISK_DEVICE}1 -L root $quiet;
 Error $? "$ER Error${Rst}: couldn't create root filesystem" "$IF root filesystem created"
 
 if [[ $HOME_FS != false ]]; then
-  mkfs.$HOME_FS ${DISK_DEVICE}2 -L home;
+  mkfs.$HOME_FS ${DISK_DEVICE}2 -L home $quiet;
   Error $? "$ER Error${Rst}: couldn't create home filesystem" "$IF home filesystem created"
 fi
