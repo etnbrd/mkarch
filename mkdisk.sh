@@ -72,7 +72,7 @@ Init
 
 while true
 do
-  echo -e "${IBla}" `lsblk` "${Rst}";
+  echo "${IBla}" `lsblk` "${Rst}";
 
   Ask "Disk device ?" DISK_DEVICE;
 
