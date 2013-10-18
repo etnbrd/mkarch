@@ -35,6 +35,7 @@ Ask() {
     else
       break;
     fi
+    tmp="";
     read tmp;
     if [[ -n $tmp ]]; then
       eval "$2=$tmp";
@@ -73,6 +74,5 @@ quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkpart.sh &
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkbase.sh;
 Error $? "$ER ressource not available" "$IF ressources available";
 
-
-Ask "Host ?" HOST;
+Ask "Host ?" HOSTNAME;
 
