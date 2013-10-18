@@ -85,17 +85,19 @@ mkdir -p tmp;
 wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh > tmp/init.sh;
 chmod +x tmp/init.sh;
 
-if [[ $MKDISK = true ]]; then
-  echo -e "$IF Making disk"
-  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh > tmp/mkdisk.sh;
-  chmod +x tmp/mkdisk.sh;
-  ./tmp/mkdisk.sh;
-fi
-if [[ $MKPART = true ]]; then
-  echo -e "$IF Making part"
-  wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
-fi
-if [[ $MKBASE = true ]]; then
-  echo -e "$IF Making base"
-  wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - | sh;
-fi
+source tmp/init.sh;
+
+# if [[ $MKDISK = true ]]; then
+#   echo -e "$IF Making disk"
+#   wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh > tmp/mkdisk.sh;
+#   chmod +x tmp/mkdisk.sh;
+#   ./tmp/mkdisk.sh;
+# fi
+# if [[ $MKPART = true ]]; then
+#   echo -e "$IF Making part"
+#   wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
+# fi
+# if [[ $MKBASE = true ]]; then
+#   echo -e "$IF Making base"
+#   wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - | sh;
+# fi
