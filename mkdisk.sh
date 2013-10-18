@@ -8,7 +8,7 @@
 #####################################################
 
 Init() {
-  ASK=true
+  ASK=false
   DISK_DEVICE=/dev/vda
   ROOT_SIZE=5G
   HOME_SIZE=10G
@@ -42,7 +42,7 @@ Pur='\033[0;35m';     BPur='\033[1;35m';    UPur='\033[4;35m';    IPur='\033[0;9
 Cya='\033[0;36m';     BCya='\033[1;36m';    UCya='\033[4;36m';    ICya='\033[0;96m';    BICya='\033[1;96m';   On_Cya='\033[46m';    On_ICya='\033[0;106m';
 Whi='\033[0;37m';     BWhi='\033[1;37m';    UWhi='\033[4;37m';    IWhi='\033[0;97m';    BIWhi='\033[1;97m';   On_Whi='\033[47m';    On_IWhi='\033[0;107m';
 
-PR="${BICya}>>${BIWhi}";
+PR="${Blu}>${BICya}>${BIWhi}";
 
 Ask() {
   while true
@@ -101,20 +101,18 @@ do
 
   Ask "Root Partition Size (GB)?" ROOT_SIZE;
   Ask "Home Partition Size (GB)?" HOME_SIZE;
-  
+
   if [[ $ASK = true ]]; then
-    echo -e ""
-    echo -e "Summary"
-    echo -e "-------"
-    echo -e ""
+    echo -e "${Cya}"
     echo -e "$DISK_DEVICE"
     echo -e "   root \t$ROOT_SIZE"
     echo -e "   home \t$HOME_SIZE"
-    echo -e ""
+    echo -e "${Rst}"
   fi
 
+  yn=yes;
   while [[ $ASK = true ]]; do
-      echo "Good ? [yes/no]"
+      echo "$PR Continue ? [yes/no]"
       read yn
       case $yn in
           [Yy]* ) yn=yes; break;;
