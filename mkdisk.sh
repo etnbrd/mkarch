@@ -102,13 +102,11 @@ do
   Ask "Root Partition Size (GB)?" ROOT_SIZE;
   Ask "Home Partition Size (GB)?" HOME_SIZE;
 
-  if [[ $ASK = true ]]; then
-    echo -e "${Cya}"
-    echo -e "$DISK_DEVICE"
-    echo -e "   root \t$ROOT_SIZE"
-    echo -e "   home \t$HOME_SIZE"
-    echo -e "${Rst}"
-  fi
+  echo -e "${Cya}"
+  echo -e "$DISK_DEVICE"
+  echo -e "   root \t$ROOT_SIZE"
+  echo -e "   home \t$HOME_SIZE"
+  echo -e "${Rst}"
 
   yn=yes;
   while [[ $ASK = true ]]; do
