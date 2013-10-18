@@ -12,14 +12,13 @@ Init
 while true
 do
 
-  Ask "Bootloader ?" BOOTLOADER
   Ask "Packages to install ?" BASE
   Ask "Hostname ?" HOSTNAME
   Ask "Time zone ?" LOCALZONE
 
   echo -e "${BIWhi}"
   echo -e "$IF $DISK_DEVICE"
-  echo -e "${BIWhi}   Base Packages \t${BIYel}$BASE"
+  echo -e "${BIWhi}   Base \t${BIYel}$BASE"
   echo -e "${BIWhi}   Hostname \t${BIYel}$HOSTNAME"
   echo -e "${BIWhi}   Time zone \t${BIYel}$LOCALZONE"
   echo -e "${Rst}"
@@ -55,12 +54,12 @@ mount $DISK_DEVICE2 /mnt/home;
 Error $? "$ER Failed to mount partitions" "$IF Partitions mounted";
 
 pacstrap /mnt "$BASE";
-Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF Basecamp established, starting campfire :)"
+Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF Basecamp established, starting campfire :)";
 
-genfstab -U -p /mnt >> /mnt/etc/fstab
+genfstab -U -p /mnt >> /mnt/etc/fstab;
 
 
-echo "${BIGre}>> Success, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)"
+echo "${BIGre}>> Success, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
 
 # arch-chroot $MNT << EOF
 # echo $HOSTNAME >> /etc/hostname
