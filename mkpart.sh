@@ -39,7 +39,7 @@ Whi='\033[0;37m';     BWhi='\033[1;37m';    UWhi='\033[4;37m';    IWhi='\033[0;9
 
 PR="${BIBlu}>${BICya}>${BIWhi}";
 IF="${BYel}>${BIYel}>${BIWhi}";
-ER="${BRed}>${BIRed}>${IRed}";
+ER="${Red}>${BIRed}>${IRed}";
 
 Ask() {
   while true
@@ -74,10 +74,10 @@ Error() {
 # COMMANDS                                          #
 #####################################################
 
-mkfs.$ROOT_FS $PART_ROOT -L root;
+`mkfs.$ROOT_FS $PART_ROOT -L root`;
 Error $? "$ER Error${Rst}: couldn't create root filesystem" "$IF root filesystem created"
 
 if [[ $HOME_FS != false ]]; then
-  mkfs.$HOME_FS $PART_HOME -L home
+  `mkfs.$HOME_FS $PART_HOME -L home`;
   Error $? "$ER Error${Rst}: couldn't create home filesystem" "$IF home filesystem created"
 fi

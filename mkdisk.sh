@@ -33,9 +33,9 @@ Pur='\033[0;35m';     BPur='\033[1;35m';    UPur='\033[4;35m';    IPur='\033[0;9
 Cya='\033[0;36m';     BCya='\033[1;36m';    UCya='\033[4;36m';    ICya='\033[0;96m';    BICya='\033[1;96m';   On_Cya='\033[46m';    On_ICya='\033[0;106m';
 Whi='\033[0;37m';     BWhi='\033[1;37m';    UWhi='\033[4;37m';    IWhi='\033[0;97m';    BIWhi='\033[1;97m';   On_Whi='\033[47m';    On_IWhi='\033[0;107m';
 
-PR="${BIBlu}>${BICya}>${BIWhi}";
-IF="${BYel}>${BIYel}>${BIWhi}";
-ER="${BRed}>${BIRed}>${IRed}";
+PR="${BBlu}>${BICya}>${BIWhi}";
+IF="${Yel}>${BIYel}>${BIWhi}";
+ER="${Red}>${BIRed}>${IRed}";
 
 Ask() {
   while true
