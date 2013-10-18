@@ -8,13 +8,14 @@
 #####################################################
 
 Init() {
-  ASK=true
+  ASK=false
   DISK_DEVICE=/dev/vda
   ROOT_SIZE=5G
   HOME_SIZE=10G
 }
 
 # TODO prompt a config file with the different variables, like arch-srv.sh and arch-dev.sh
+# then wget it, source it, and continue
 
 #####################################################
 # UTILS                                             #
@@ -135,10 +136,10 @@ done
 #####################################################
 
 sgdisk -o $DISK_DEVICE > /dev/null 2>&1;                                  # Clear partition
-Error $? "$ER Couldn't Clear Partition" "$IF Disk erased successfully";
+Error $? "$ER Error${Rst}: Couldn't Clear Partition" "$IF Disk erased successfully";
 
 sgdisk -n 1:0:+$ROOT_SIZE -c 1:'root' $DISK_DEVICE > /dev/null 2>&1;      # Create root partition
-Error $? "$ER Couldn't create root partition" "$IF Root partition created"
+Error $? "$ER Error${Rst}: Couldn't create root partition" "$IF Root partition created"
 
 sgdisk -N 2 -c 2:'home' $DISK_DEVICE > /dev/null 2>&1;                    # Create home partition$?
-Error $? "$ER Couldn't create home partition" "$IF Home partition created"
+Error $? "$ER Error${Rst}: Couldn't create home partition" "$IF Home partition created"
