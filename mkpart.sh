@@ -70,8 +70,6 @@ Error() {
   fi
 }
 
-alias quiet='> /dev/null 2>&1';
-
 quiet() {
   "$@" >/dev/null 2>&1
 }

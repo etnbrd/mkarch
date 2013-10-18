@@ -66,6 +66,10 @@ Error() {
   fi
 }
 
+quiet() {
+  "$@" >/dev/null 2>&1
+}
+
 #####################################################
 # PROMPT                                            #
 #####################################################
@@ -135,11 +139,11 @@ done
 # COMMANDS                                          #
 #####################################################
 
-sgdisk -o $DISK_DEVICE > /dev/null 2>&1;                                  # Clear partition
+quiet sgdisk -o $DISK_DEVICE;                                  # Clear partition
 Error $? "$ER Error${Rst}: Couldn't Clear Partition" "$IF Disk erased successfully";
 
-sgdisk -n 1:0:+$ROOT_SIZE -c 1:'root' $DISK_DEVICE > /dev/null 2>&1;      # Create root partition
+quiet sgdisk -n 1:0:+$ROOT_SIZE -c 1:'root' $DISK_DEVICE;      # Create root partition
 Error $? "$ER Error${Rst}: Couldn't create root partition" "$IF Root partition created"
 
-sgdisk -N 2 -c 2:'home' $DISK_DEVICE > /dev/null 2>&1;                    # Create home partition$?
+quiet sgdisk -N 2 -c 2:'home' $DISK_DEVICE;                    # Create home partition$?
 Error $? "$ER Error${Rst}: Couldn't create home partition" "$IF Home partition created"
