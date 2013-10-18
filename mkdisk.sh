@@ -8,7 +8,7 @@
 #####################################################
 
 Init() {
-  ASK=false
+  ASK=true
   DISK_DEVICE=/dev/vda
   ROOT_SIZE=5G
   HOME_SIZE=10G
@@ -102,15 +102,15 @@ do
   Ask "Root Partition Size (GB)?" ROOT_SIZE;
   Ask "Home Partition Size (GB)?" HOME_SIZE;
 
-  echo -e "${Cya}"
-  echo -e "$DISK_DEVICE"
-  echo -e "   root \t$ROOT_SIZE"
-  echo -e "   home \t$HOME_SIZE"
+  echo -e "${BIWhi}"
+  echo -e "${BIYel}>${BIWhi} $DISK_DEVICE"
+  echo -e "${BIWhi}   root \t${BIYel}$ROOT_SIZE"
+  echo -e "${BIWhi}   home \t${BIYel}$HOME_SIZE"
   echo -e "${Rst}"
 
   yn=yes;
   while [[ $ASK = true ]]; do
-      echo "$PR Continue ? [yes/no]"
+      echo "$PR Continue ? ${Rst}[${IBla}yes/no${Rst}] "
       read yn
       case $yn in
           [Yy]* ) yn=yes; break;;
