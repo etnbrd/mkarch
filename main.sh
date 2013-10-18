@@ -76,28 +76,4 @@ Error $? "$ER ressource not available" "$IF ressources available";
 
 Ask "Host ?" HOST;
 
-
-
-# Ask "Make disk ?" MKDISK
-# echo "--------------------------";
-
-# Ask "Make part ?" MKPART
-# echo "--------------------------";
-
-# Ask "Make base ?" MKBASE
-# echo "--------------------------";
-
-# quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOST/init.sh;
-# Error $? "$ER hosts/$HOST/init.sh doesn't exist";
-
-# quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOST/init.sh -O - | source;
-
-# if [[ MKDISK = true ]]; then
-#   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - | sh;
-# fi
-# if [[ MKPART = true ]]; then
-#   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
-# fi
-# if [[ MKBASE = true ]]; then
-#   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - | sh;
-# fi
+exit;
