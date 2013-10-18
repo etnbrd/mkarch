@@ -72,6 +72,8 @@ done
 # COMMANDS                                          #
 #####################################################
 
+quiet umount /mnt/{home,};
+
 quiet sgdisk -o $DISK_DEVICE;                                  # Clear partition
 Error $? "$ER Couldn't Clear Partition" "$IF Disk erased successfully";
 
