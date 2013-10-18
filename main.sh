@@ -85,13 +85,13 @@ quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOST
 
 if [[ $MKDISK = true ]]; then
   echo -e "$IF Making disk"
-  quiet wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - | sh;
+  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - | sh;
 fi
 if [[ $MKPART = true ]]; then
   echo -e "$IF Making part"
-  quiet wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
+  wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
 fi
 if [[ $MKBASE = true ]]; then
   echo -e "$IF Making base"
-  quiet wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - | sh;
+  wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - | sh;
 fi
