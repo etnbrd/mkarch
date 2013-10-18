@@ -72,8 +72,9 @@ Init
 
 while true
 do
+  echo -n "${IBla}"
   lsblk
-  echo "";
+  echo "${Rst}";
   Ask "Disk device ?" DISK_DEVICE;
 
   if [[ -n $DISK_DEVICE && -w $DISK_DEVICE ]]
@@ -87,20 +88,21 @@ done
 
 while true
 do
-  parted -s $DISK_DEVICE print;
-  echo "";
+  echo -n "${IBla}"
+  sgdisk -p $DISK_DEVICE;
+  echo "${Rst}";
 
   Ask "Root Partition Size (GB)?" ROOT_SIZE;
   Ask "Home Partition Size (GB)?" HOME_SIZE;
 
-  echo ""
-  echo "Summary"
-  echo "-------"
-  echo ""
+  echo -e ""
+  echo -e "Summary"
+  echo -e "-------"
+  echo -e ""
   echo -e "$DISK_DEVICE"
   echo -e "   root \t$ROOT_SIZE"
   echo -e "   home \t$HOME_SIZE"
-  echo ""
+  echo -e ""
 
   while [[ $ASK = true ]]; do
       echo "Good ? [yes/no]"
