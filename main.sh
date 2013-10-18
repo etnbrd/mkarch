@@ -82,7 +82,7 @@ quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOST
 Error $? "$ER hosts/$HOST/init.sh doesn't exist";
 
 mkdir -p tmp;
-wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - > tmp/init.sh;
+wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - > tmp/init.sh 2> /dev/null;
 chmod +x ./tmp/init.sh;
 
 source ./tmp/init.sh;
@@ -90,7 +90,7 @@ Init;
 
 if [[ $MKDISK = true ]]; then
   echo -e "$IF Making disk"
-  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - > tmp/mkdisk.sh;
+  wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - > tmp/mkdisk.sh 2> /dev/null;
   chmod +x tmp/mkdisk.sh;
   . ./tmp/mkdisk.sh;
 fi
