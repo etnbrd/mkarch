@@ -90,7 +90,9 @@ done
 while true
 do
 
-  echo -e "${IBla}" `sgdisk -p $DISK_DEVICE` "${Rst}";
+  echo -ne "${IBla}"
+  sgdisk -p $DISK_DEVICE
+  echo -e "${Rst}";
 
   Ask "Root Partition Size (GB)?" ROOT_SIZE;
   Ask "Home Partition Size (GB)?" HOME_SIZE;
