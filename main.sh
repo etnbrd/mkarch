@@ -82,7 +82,7 @@ quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOST
 Error $? "$ER hosts/$HOST/init.sh doesn't exist";
 
 mkdir -p tmp;
-wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh > tmp/init.sh;
+wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - > tmp/init.sh;
 chmod +x tmp/init.sh;
 
 source tmp/init.sh;
