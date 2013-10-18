@@ -62,7 +62,6 @@ quiet() {
 # MAIN                                              #
 #####################################################
 
-ASK=true;
 MKDISK=true;
 MKPART=true;
 MKBASE=true;
