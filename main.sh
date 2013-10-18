@@ -81,7 +81,7 @@ Ask "Make base ?" MKBASE
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh;
 Error $? "$ER hosts/$HOST/init.sh doesn't exist";
 
-quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - | source;
+quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -O - | sh;
 
 if [[ MKDISK = true ]]; then
   quiet wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - | sh;
