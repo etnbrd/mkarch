@@ -8,6 +8,7 @@
 #####################################################
 
 Init() {
+  ASK=false
   DISK_DEVICE=/dev/vda
   ROOT_SIZE=5G
   HOME_SIZE=10G
@@ -24,8 +25,10 @@ Ask() {
   do
     if [[ -z ${!2} ]]; then
       echo -n "$1 ";
-    else 
+    elif [[ $ASK ]]; then
       echo -n "$1 [${!2}] ";
+    else
+      break;
     fi
     read tmp;
     if [[ -n $tmp ]]; then
@@ -99,6 +102,6 @@ done
 # COMMANDS                                          #
 #####################################################
 
-sgdisk -o $DISK_DEVICE                                        # Clear partition
-sgdisk -n 1:0:+$ROOT_SIZE -c 1:'root' $DISK_DEVICE            # Create root partition
-sgdisk -N 2 -c 2:'home' $DISK_DEVICE                          # Create home partition
+sgdisk -o $DISK_DEVICE > /dev/null 2>&1;                                  # Clear partition
+sgdisk -n 1:0:+$ROOT_SIZE -c 1:'root' $DISK_DEVICE > /dev/null 2>&1;      # Create root partition
+sgdisk -N 2 -c 2:'home' $DISK_DEVICE > /dev/null 2>&1;                    # Create home partition
