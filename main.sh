@@ -30,7 +30,7 @@ Ask() {
   do
     if [[ -z ${!2} ]]; then
       echo -ne "$PR $1 ${Rst}";
-    elif [[ $ASK = true ]]; then
+    elif [[ $ASK != false ]]; then
       echo -ne "$PR $1 ${Rst}[${IBla}${!2}${Rst}] ";
     else
       break;
