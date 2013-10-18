@@ -48,9 +48,9 @@ done
 # COMMANDS                                          #
 #####################################################
 
-mount $DISK_DEVICE1 /mnt &&
+mount ${DISK_DEVICE}1 /mnt &&
 mkdir -p /mnt/home &&
-mount $DISK_DEVICE2 /mnt/home;
+mount ${DISK_DEVICE2} /mnt/home;
 Error $? "$ER Failed to mount partitions" "$IF Partitions mounted";
 
 pacstrap /mnt "$BASE";
