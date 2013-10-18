@@ -9,8 +9,8 @@
 
 Init() {
   DISK_DEVICE=/dev/vda
-  ROOT_SIZE=5
-  HOME_SIZE=10
+  ROOT_SIZE=5G
+  HOME_SIZE=10G
 }
 
 # TODO prompt a config file with the different variables, like arch-srv.sh and arch-dev.sh
@@ -71,8 +71,8 @@ do
   echo "-------"
   echo ""
   echo -e "$DISK_DEVICE"
-  echo -e "   root \t${ROOT_SIZE}G"
-  echo -e "   home \t${HOME_SIZE}G"
+  echo -e "   root \tROOT_SIZE"
+  echo -e "   home \tHOME_SIZE"
   echo ""
 
   while true; do
