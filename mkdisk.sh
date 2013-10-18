@@ -100,5 +100,5 @@ done
 #####################################################
 
 sgdisk -o $DISK_DEVICE                                        # Clear partition
-sgdisk -n 1:2048:$ROOT_SIZE -c 1:'root' $DISK_DEVICE          # Create root partition
+sgdisk -n 1:0:+$ROOT_SIZE -c 1:'root' $DISK_DEVICE            # Create root partition
 sgdisk -N 2 -c 2:'home' $DISK_DEVICE                          # Create home partition
