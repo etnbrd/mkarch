@@ -66,6 +66,7 @@ MKDISK=true;
 MKPART=true;
 MKBASE=true;
 
+# TODO echo big fat fancy arch logo
 
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh &&
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkpart.sh &&
@@ -74,16 +75,16 @@ Error $? "$ER ressource not available" "$IF ressources available";
 
 
 Ask "Host ?" HOST
-echo "--------------------------"
+echo "--------------------------";
 
 Ask "Make disk ?" MKDISK
-echo "--------------------------"
+echo "--------------------------";
 
 Ask "Make part ?" MKPART
-echo "--------------------------"
+echo "--------------------------";
 
 Ask "Make base ?" MKBASE
-echo "--------------------------"
+echo "--------------------------";
 
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOST/init.sh;
 Error $? "$ER hosts/$HOST/init.sh doesn't exist";
