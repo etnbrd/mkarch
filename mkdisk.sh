@@ -32,7 +32,9 @@ Pur='\033[0;35m';     BPur='\033[1;35m';    UPur='\033[4;35m';    IPur='\033[0;9
 Cya='\033[0;36m';     BCya='\033[1;36m';    UCya='\033[4;36m';    ICya='\033[0;96m';    BICya='\033[1;96m';   On_Cya='\033[46m';    On_ICya='\033[0;106m';
 Whi='\033[0;37m';     BWhi='\033[1;37m';    UWhi='\033[4;37m';    IWhi='\033[0;97m';    BIWhi='\033[1;97m';   On_Whi='\033[47m';    On_IWhi='\033[0;107m';
 
-PR="${Blu}>${BICya}>${BIWhi}";
+PR="${BIBlu}>${BICya}>${BIWhi}";
+IF="${BYel}>${BIYel}>${BIWhi}";
+ER="${BRed}>${BIRed}>${IRed}";
 
 Ask() {
   while true
@@ -52,6 +54,15 @@ Ask() {
       break;
     fi
   done
+}
+
+Error() {
+  if [[ $1 != 0 ]]; then
+    echo -e $2;
+    exit;
+  else
+    echo -e $3;
+  fi
 }
 
 #####################################################
@@ -93,14 +104,14 @@ do
   Ask "Home Partition Size (GB)?" HOME_SIZE;
 
   echo -e "${BIWhi}"
-  echo -e "${BIYel}>${BIWhi} $DISK_DEVICE"
+  echo -e "$IF $DISK_DEVICE"
   echo -e "${BIWhi}   root \t${BIYel}$ROOT_SIZE"
   echo -e "${BIWhi}   home \t${BIYel}$HOME_SIZE"
   echo -e "${Rst}"
 
   yn=yes;
   while [[ $ASK = true ]]; do
-      echo -e "$PR Continue ? ${Rst}[${IBla}yes/no${Rst}] "
+      echo -ne "$PR Continue ? ${Rst}[${IBla}yes/no${Rst}] "
       read yn
       case $yn in
           [Yy]* ) yn=yes; break;;
@@ -124,5 +135,10 @@ done
 #####################################################
 
 sgdisk -o $DISK_DEVICE > /dev/null 2>&1;                                  # Clear partition
+Error $? "$ER Couldn't Clear Partition" "$IF Disk erased successfully";
+
 sgdisk -n 1:0:+$ROOT_SIZE -c 1:'root' $DISK_DEVICE > /dev/null 2>&1;      # Create root partition
-sgdisk -N 2 -c 2:'home' $DISK_DEVICE > /dev/null 2>&1;                    # Create home partition
+Error $? "$ER Couldn't create root partition" "$IF Root partition created"
+
+sgdisk -N 2 -c 2:'home' $DISK_DEVICE > /dev/null 2>&1;                    # Create home partition$?
+Error $? "$ER Couldn't create home partition" "$IF Home partition created"
