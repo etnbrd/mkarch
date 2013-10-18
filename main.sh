@@ -88,17 +88,23 @@ chmod +x ./tmp/init.sh;
 source ./tmp/init.sh;
 Init;
 
+# TODO downloading and saving to disc is just messy, fix that.
+
 if [[ $MKDISK = true ]]; then
   echo -e "$IF Making disk"
   wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -O - > tmp/mkdisk.sh 2> /dev/null;
   chmod +x tmp/mkdisk.sh;
   . ./tmp/mkdisk.sh;
 fi
-# if [[ $MKPART = true ]]; then
-#   echo -e "$IF Making part"
-#   wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - | sh;
-# fi
-# if [[ $MKBASE = true ]]; then
-#   echo -e "$IF Making base"
-#   wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - | sh;
-# fi
+if [[ $MKPART = true ]]; then
+  echo -e "$IF Making part"
+  wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -O - > tmp/mkpart.sh 2> /dev/null;
+  chmod +x tmp/mkpart.sh;
+  . ./tmp/mkpart.sh;
+fi
+if [[ $MKBASE = true ]]; then
+  echo -e "$IF Making base"
+  wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -O - > tmp/mkbase.sh 2> /dev/null;
+  chmod +x tmp/mkbase.sh;
+  . ./tmp/mkbase.sh;
+fi
