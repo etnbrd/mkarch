@@ -67,9 +67,8 @@ done
 chroot echo $HOSTNAME > /etc/hostname
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
-echo ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
-
-chroot ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
+chroot rm /etc/localtime
+chroot "ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime"
 Error $? "$ER Failed to setup localtime" "$IF localtime \t{BIYel}`cat /mnt/etc/localtime`${Rst}"
 
 chroot wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /etc/locale.gen;
