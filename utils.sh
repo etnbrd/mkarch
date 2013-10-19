@@ -56,7 +56,7 @@ quiet() {
   "$@" >/dev/null 2>&1
 }
 
-chroot() {
+chrootsh() {
   echo ">>" $@;
   echo ">> $@";
   echo ">> " "$@";

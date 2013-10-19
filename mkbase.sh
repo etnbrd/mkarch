@@ -64,30 +64,30 @@ done
 # echo "${BIGre}>>${BIWhi} Success${Rst}, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
 
 # arch-chroot /mnt << EOF
-chroot echo $HOSTNAME > /etc/hostname;
+chrootsh echo $HOSTNAME > /etc/hostname;
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
-chroot rm /etc/localtime;
-chroot "ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime"
+chrootsh rm /etc/localtime;
+chrootsh "ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime"
 Error $? "$ER Failed to setup localtime" "$IF localtime \t{BIYel}$LOCALZONE${Rst}"
 
-chroot "wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /etc/locale.gen"
+chrootsh "wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /etc/locale.gen"
 Error $? "$ER Failed to setup locales" "$IF locales \t{BIYel}`cat /mnt/etc/locale.gen`${Rst}"
 
-chroot locale-gen
+chrootsh locale-gen
 Error $? "$ER Failed to generate locales" "$IF locales generated"
 
-chroot "wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /etc/vconsole.conf"
+chrootsh "wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /etc/vconsole.conf"
 Error $? "$ER Failed to setup vconsole" "$IF locales: \t{BIYel}`cat /mnt/etc/vconsole.conf`${Rst}"
 
-chroot "mkinitcpio -p linux"
+chrootsh "mkinitcpio -p linux"
 Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
-chroot echo "[archlinuxfr]
+chrootsh echo "[archlinuxfr]
               SigLevel = Never
               Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf;
 
-chroot pacman -Sy yaourt;
+chrootsh pacman -Sy yaourt;
 
 # TODO do the bootloader
 # TODO do the root password
