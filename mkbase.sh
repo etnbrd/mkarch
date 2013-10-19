@@ -48,6 +48,8 @@ done
 # COMMANDS                                          #
 #####################################################
 
+quiet umount /mnt/{home,};
+
 mount ${DISK_DEVICE}1 /mnt &&
 mkdir -p /mnt/home &&
 mount ${DISK_DEVICE}2 /mnt/home;

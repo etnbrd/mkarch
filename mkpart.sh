@@ -46,6 +46,8 @@ done
 # COMMANDS                                          #
 #####################################################
 
+quiet umount /mnt/{home,};
+
 quiet mkfs.$ROOT_FS ${DISK_DEVICE}1 -L root;
 Error $? "$ER couldn't create root filesystem" "$IF root filesystem created"
 
