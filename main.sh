@@ -16,7 +16,7 @@ MKBASE=true;
 
 # TODO echo big fat fancy arch logo
 
-source <(wget https://raw.github.com/gravitezero/mkarch/master/utils.sh -O - 2> /dev/null);
+source <(wget https://raw.github.com/gravitezero/mkarch/master/utils.sh -qO -);
 
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh &&
 quiet wget --spider https://raw.github.com/gravitezero/mkarch/master/mkpart.sh &&
