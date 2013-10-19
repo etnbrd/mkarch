@@ -65,7 +65,7 @@ done
 
 # arch-chroot /mnt << EOF
 chroot echo $HOSTNAME > /etc/hostname
-Error $? "$ER Failed to setup hostname" "$IF hostname : `cat /mnt/etc/hostname`"
+Error $? "$ER Failed to setup hostname" "$IF hostname : ${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
 chroot ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
 Error $? "$ER Failed to setup localtime" "$IF localtime : `cat /mnt/etc/localtime`"
