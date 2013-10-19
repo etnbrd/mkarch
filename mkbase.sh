@@ -53,7 +53,7 @@ mkdir -p /mnt/home &&
 mount ${DISK_DEVICE}2 /mnt/home;
 Error $? "$ER Failed to mount partitions" "$IF Partitions mounted";
 
-pacstrap /mnt "$BASE";
+pacstrap /mnt $BASE;
 Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF Basecamp established, starting campfire :)";
 
 genfstab -U -p /mnt >> /mnt/etc/fstab;
