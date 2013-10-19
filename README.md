@@ -2,7 +2,8 @@
 
 mkarch is a set of scripts I use to automate the setup of my archs.
 
-`zsh <(wget https://raw.github.com/gravitezero/mkarch/master/main.sh -qO -);`
+the onliner :
+`zsh <(wget https://raw.github.com/gravitezero/mkarch/master/main.sh -qO -)`
 
 About zsh :
 zsh is the default shell in arch, that's why I used it.
