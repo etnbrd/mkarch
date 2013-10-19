@@ -57,5 +57,5 @@ quiet() {
 }
 
 chroot() {
-  arch-chroot /mnt /bin/bash -c "${1}"
+  arch-chroot /mnt /bin/sh -c "$@"
 }
