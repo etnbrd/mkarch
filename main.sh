@@ -1,10 +1,12 @@
-#!/bin/bash
+#!/bin/zsh
 #
 # mkbase.sh by etnbrd
 # This is the main script
 
-# wget https://raw.github.com/gravitezero/mkarch/master/main.sh -O - | sh;
+# The one-liner :)
 # bash <(wget https://raw.github.com/gravitezero/mkarch/master/main.sh -qO -);
+# About bash :
+Bash support 
 
 #####################################################
 # MAIN                                              #

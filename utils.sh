@@ -26,10 +26,10 @@ ER="${Red}>${BIRed}>${IRed} Error${Rst}:";
 Ask() {
   while true
   do
-    if [[ -z ${!2} ]]; then
+    if [[ -z ${(P)2} ]]; then
       echo -ne "$PR $1 ${Rst}";
     elif [[ $ASK != false ]]; then
-      echo -ne "$PR $1 ${Rst}[${IBla}${!2}${Rst}] ";
+      echo -ne "$PR $1 ${Rst}[${IBla}${(P)2}${Rst}] ";
     else
       break;
     fi
@@ -37,7 +37,7 @@ Ask() {
     if [[ -n $tmp ]]; then
       eval "$2=$tmp";
     fi
-    if [[ -n ${!2} ]]; then
+    if [[ -n ${(P)2} ]]; then
       break;
     fi
   done
