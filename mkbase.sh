@@ -67,26 +67,26 @@ arch-chroot /mnt << EOF
 echo $HOSTNAME > /etc/hostname
 Error $? "$ER Failed to setup hostname" "$IF hostname : `cat /etc/hostname`"
 
-ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
-Error $? "$ER Failed to setup localtime" "$IF localtime : `cat /etc/localtime`"
+# ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
+# Error $? "$ER Failed to setup localtime" "$IF localtime : `cat /etc/localtime`"
 
-wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /etc/locale.gen;
-Error $? "$ER Failed to setup locales" "$IF locales: `cat /etc/locale.gen`"
+# wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /etc/locale.gen;
+# Error $? "$ER Failed to setup locales" "$IF locales: `cat /etc/locale.gen`"
 
-locale-gen
-Error $? "$ER Failed to generate locales" "$IF locales generated"
+# locale-gen
+# Error $? "$ER Failed to generate locales" "$IF locales generated"
 
-wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /etc/vconsole.conf;
-Error $? "$ER Failed to setup vconsole" "$IF locales: `cat /etc/vconsole.conf`"
+# wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /etc/vconsole.conf;
+# Error $? "$ER Failed to setup vconsole" "$IF locales: `cat /etc/vconsole.conf`"
 
-mkinitcpio -p linux;
-Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
+# mkinitcpio -p linux;
+# Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
-echo "[archlinuxfr]
-      SigLevel = Never
-      Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf;
+# echo "[archlinuxfr]
+#       SigLevel = Never
+#       Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf;
 
-pacman -Sy yaourt;
+# pacman -Sy yaourt;
 
 # TODO do the bootloader
 # TODO do the root password
