@@ -14,13 +14,15 @@ MKDISK=true;
 MKPART=true;
 MKBASE=true;
 
+SOURCE="https://raw.github.com/gravitezero/mkarch/master/";
+
 # TODO echo big fat fancy arch logo
 
-source <(wget https://raw.github.com/gravitezero/mkarch/master/utils.sh -qO -);
+source <(wget ${SOURCE}utils.sh -qO -);
 
-wget -q --spider https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh &&
-wget -q --spider https://raw.github.com/gravitezero/mkarch/master/mkpart.sh &&
-wget -q --spider https://raw.github.com/gravitezero/mkarch/master/mkbase.sh;
+wget -q --spider ${SOURCE}mkdisk.sh &&
+wget -q --spider ${SOURCE}mkpart.sh &&
+wget -q --spider ${SOURCE}mkbase.sh;
 Error $? "$ER ressource not available" "$IF ressources available";
 
 Ask "Host ?" HOSTNAME
@@ -28,21 +30,21 @@ Ask "Make disk ?" MKDISK
 Ask "Make part ?" MKPART
 Ask "Make base ?" MKBASE
 
-wget -q --spider https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh;
+wget -q --spider ${SOURCE}hosts/$HOSTNAME/init.sh;
 Error $? "$ER hosts/${HOSTNAME}/init.sh doesn't exist";
 
-source <(wget https://raw.github.com/gravitezero/mkarch/master/hosts/$HOSTNAME/init.sh -qO -);
+source <(wget ${SOURCE}hosts/$HOSTNAME/init.sh -qO -);
 Init;
 
 if [[ $MKDISK = true ]]; then
   echo -e "\n>$IF Making disk"
-  source <(wget https://raw.github.com/gravitezero/mkarch/master/mkdisk.sh -qO -);
+  source <(wget ${SOURCE}mkdisk.sh -qO -);
 fi
 if [[ $MKPART = true ]]; then
   echo -e "\n>$IF Making part"
-  source <(wget https://raw.github.com/gravitezero/mkarch/master/mkpart.sh -qO -);
+  source <(wget ${SOURCE}mkpart.sh -qO -);
 fi
 if [[ $MKBASE = true ]]; then
   echo -e "\n>$IF Making base"
-  source <(wget https://raw.github.com/gravitezero/mkarch/master/mkbase.sh -qO -);
+  source <(wget ${SOURCE}mkbase.sh -qO -);
 fi
