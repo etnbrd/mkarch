@@ -64,10 +64,10 @@ done
 # echo "${BIGre}>>${BIWhi} Success${Rst}, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
 
 # arch-chroot /mnt << EOF
-chroot echo $HOSTNAME > /etc/hostname
+chroot "echo $HOSTNAME > /etc/hostname"
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
-chroot rm /etc/localtime
+chroot "rm /etc/localtime"
 chroot "ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime"
 Error $? "$ER Failed to setup localtime" "$IF localtime \t{BIYel}`cat /mnt/etc/localtime`${Rst}"
 
