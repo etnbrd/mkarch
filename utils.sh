@@ -45,10 +45,10 @@ Ask() {
 
 Error() {
   if [[ $1 != 0 ]]; then
-    echo -e $2;
+    echo -e $2 ${Rst};
     exit;
   elif [[ -n $3 ]]; then
-    echo -e $3;
+    echo -e $3 ${Rst};
   fi
 }
 
