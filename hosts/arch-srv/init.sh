@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 #
 # arch-srv/init.sh by etnbrd
 # This script is a configuration file for my arch-srv

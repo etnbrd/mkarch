@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 #
 # mkdisk.sh by etnbrd
 # This script prepare the disks

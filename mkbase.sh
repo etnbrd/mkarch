@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 #
 # mkbase.sh by etnbrd
 # This script install the base system
