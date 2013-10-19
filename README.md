@@ -2,7 +2,7 @@
 
 mkarch is a set of scripts I use to automate the setup of my archs.
 
-the onliner :
+the one-liner :
 `zsh <(wget https://raw.github.com/gravitezero/mkarch/master/main.sh -qO -)`
 
 About zsh :
