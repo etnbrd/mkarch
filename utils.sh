@@ -55,3 +55,7 @@ Error() {
 quiet() {
   "$@" >/dev/null 2>&1
 }
+
+chroot() {
+  arch-chroot /mnt /bin/zsh -c "${1}"
+}
