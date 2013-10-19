@@ -65,6 +65,7 @@ done
 
 # arch-chroot /mnt << EOF
 chrootsh echo $HOSTNAME > /etc/hostname;
+echrootsh ls
 echo `ls`
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
