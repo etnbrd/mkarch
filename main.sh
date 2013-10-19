@@ -4,6 +4,7 @@
 # This is the main script
 
 # wget https://raw.github.com/gravitezero/mkarch/master/main.sh -O - | sh;
+# source <(https://raw.github.com/gravitezero/mkarch/master/main.sh -O - 2> /dev/null);
 
 #####################################################
 # MAIN                                              #
