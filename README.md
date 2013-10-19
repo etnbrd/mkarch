@@ -7,4 +7,4 @@ the one-liner :
 
 About zsh :  
 zsh is the default shell in arch, that's why I used it.
-However, the scripts should be fully compatible with bash if one replace the variable indiraction syntax in utils.sh from `${(P)2}` (zsh syntax) to `${!2}` (bash syntax)
+However, the scripts should be fully compatible with bash if one replace the indirect variable reference syntax in utils.sh from `${(P)2}` (zsh syntax) to `${!2}` (bash syntax)
