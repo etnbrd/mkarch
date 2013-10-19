@@ -65,19 +65,21 @@ done
 
 # arch-chroot /mnt << EOF
 chroot echo $HOSTNAME > /etc/hostname
-Error $? "$ER Failed to setup hostname" "$IF hostname : ${BIYel}`cat /mnt/etc/hostname`${Rst}"
+Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
+
+echo ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
 
 chroot ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
-Error $? "$ER Failed to setup localtime" "$IF localtime : `cat /mnt/etc/localtime`"
+Error $? "$ER Failed to setup localtime" "$IF localtime \t{BIYel}`cat /mnt/etc/localtime`${Rst}"
 
 chroot wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /etc/locale.gen;
-Error $? "$ER Failed to setup locales" "$IF locales: `cat /mnt/etc/locale.gen`"
+Error $? "$ER Failed to setup locales" "$IF locales \t{BIYel}`cat /mnt/etc/locale.gen`${Rst}"
 
 chroot locale-gen
 Error $? "$ER Failed to generate locales" "$IF locales generated"
 
 chroot wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /etc/vconsole.conf;
-Error $? "$ER Failed to setup vconsole" "$IF locales: `cat /mnt/etc/vconsole.conf`"
+Error $? "$ER Failed to setup vconsole" "$IF locales: \t{BIYel}`cat /mnt/etc/vconsole.conf`${Rst}"
 
 chroot mkinitcpio -p linux;
 Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
