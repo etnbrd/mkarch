@@ -4,9 +4,7 @@
 # This is the main script
 
 # The one-liner :)
-# bash <(wget https://raw.github.com/gravitezero/mkarch/master/main.sh -qO -);
-# About bash :
-Bash support 
+# zsh <(wget https://raw.github.com/gravitezero/mkarch/master/main.sh -qO -);
 
 #####################################################
 # MAIN                                              #
