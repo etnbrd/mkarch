@@ -13,6 +13,8 @@ Init() {
   ROOT_FS=ext4
   HOME_FS=ext4 # if HOME_FS = false, don't erase home.
 
+  arch=i686
+
   BASE="base" # Here only the strict minimum, the rest should be in the salt configuration
   HOSTNAME="arch-srv"
   LOCALZONE="Europe/Paris"
