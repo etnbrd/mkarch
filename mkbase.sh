@@ -65,7 +65,7 @@ done
 # echo "${BIGre}>>${BIWhi} Success${Rst}, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
 
 # arch-chroot /mnt << EOF
-chrootsh echo $HOSTNAME > /etc/hostname
+chrootsh "echo $HOSTNAME > /etc/hostname"
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
 chrootsh rm /etc/localtime
