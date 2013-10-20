@@ -86,8 +86,8 @@ Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vco
 
 # TODO get the complete pacman.conf
 chrootsh echo $arch
-chrootsh cat /etc/pacman.conf.bak > /etc/pacman.conf
-chrootsh echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+chrootsh "cat /etc/pacman.conf.bak > /etc/pacman.conf"
+chrootsh 'echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf'
 
 chrootsh pacman -Sy yaourt;
 
