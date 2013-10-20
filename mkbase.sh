@@ -84,7 +84,7 @@ Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vco
 chrootsh mkinitcpio -p linux
 Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
-chrootsh pacman -Sy grub
+chrootsh pacman -Sy grub < EOL
 chrootsh grub-install --target=i386-pc --recheck $DISK_DEVICE
 chrootsh grub-mkconfig -o /boot/grub/grub.cfg
 
