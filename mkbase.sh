@@ -81,8 +81,8 @@ Error $? "$ER Failed to generate locales" "$IF locales generated"
 wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /mnt/etc/vconsole.conf
 Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vconsole.conf | sed s_^_\\\t_`${Rst}"
 
-chrootsh mkinitcpio -p linux
-Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
+# chrootsh mkinitcpio -p linux
+# Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
 # TODO get the complete pacman.conf
 chrootsh echo $arch
