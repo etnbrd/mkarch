@@ -49,23 +49,19 @@ done
 # COMMANDS                                          #
 #####################################################
 
-# quiet umount /mnt/{home,};
+quiet umount /mnt/{home,};
 
-# mount ${DISK_DEVICE}1 /mnt &&
-# mkdir -p /mnt/home &&
-# mount ${DISK_DEVICE}2 /mnt/home;
-# Error $? "$ER Failed to mount partitions" "$IF Partitions mounted";
+mount ${DISK_DEVICE}1 /mnt &&
+mkdir -p /mnt/home &&
+mount ${DISK_DEVICE}2 /mnt/home;
+Error $? "$ER Failed to mount partitions" "$IF Partitions mounted";
 
-# pacstrap /mnt $BASE;
-# Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF Basecamp established, starting campfire :)";
+pacstrap /mnt $BASE;
+Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF Basecamp established, starting campfire :)";
 
-# genfstab -U -p /mnt >> /mnt/etc/fstab;
+genfstab -U -p /mnt >> /mnt/etc/fstab;
 
-
-# echo "${BIGre}>>${BIWhi} Success${Rst}, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
-
-arch-chroot /mnt << EOF
-exit;
+echo "${BIGre}>>${BIWhi} Success${Rst}, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
 
 chrootsh echo $HOSTNAME > /etc/hostname
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
