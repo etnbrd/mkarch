@@ -10,6 +10,7 @@
 # MAIN                                              #
 #####################################################
 
+ASK=false;
 HOSTNAME=arch-srv;
 MKDISK=false;
 MKPART=false;
