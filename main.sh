@@ -10,8 +10,9 @@
 # MAIN                                              #
 #####################################################
 
-MKDISK=true;
-MKPART=true;
+HOSTNAME=arch-srv;
+MKDISK=false;
+MKPART=false;
 MKBASE=true;
 
 SOURCE="https://raw.github.com/gravitezero/mkarch/master";
