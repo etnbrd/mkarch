@@ -57,6 +57,5 @@ quiet() {
 }
 
 chrootsh() {
-  echo "$*"
   arch-chroot /mnt /bin/sh -c "$*"
 }

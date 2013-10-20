@@ -94,6 +94,6 @@ chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
 wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
 # chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
 
-chrootsh pacman -Sy yaourt
+chrootsh pacman -Sy yaourt < EOL
 
-chrootsh yaourt -S salt
+chrootsh yaourt -S salt < EOL
