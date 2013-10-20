@@ -81,8 +81,13 @@ Error $? "$ER Failed to generate locales" "$IF locales generated"
 wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /mnt/etc/vconsole.conf
 Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vconsole.conf | sed s_^_\\\t_`${Rst}"
 
-# chrootsh mkinitcpio -p linux
-# Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
+chrootsh mkinitcpio -p linux
+Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
+
+chrootsh pacman -S grub
+chrootsh grub-install --target=i386-pc --recheck $DISK_DEVICE
+chrootsh grub-mkconfig -o /boot/grub/grub.cfg
+
 
 # TODO get the complete pacman.conf
 wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - > /mnt/etc/pacman.conf
@@ -90,6 +95,3 @@ wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - > /mnt/etc/pacman.conf
 # chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
 
 chrootsh pacman -Sy yaourt
-
-# TODO do the bootloader
-# TODO do the root password
