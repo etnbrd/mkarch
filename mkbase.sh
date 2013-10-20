@@ -84,7 +84,7 @@ chrootsh mkinitcpio -p linux
 Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
 # TODO get the complete pacman.conf
-chrootsh echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf;
+chrootsh echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf;
 
 chrootsh pacman -Sy yaourt;
 
