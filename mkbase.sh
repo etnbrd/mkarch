@@ -71,13 +71,13 @@ chrootsh rm /etc/localtime
 chrootsh ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
 Error $? "$ER Failed to setup localtime" "$IF localtime \t${BIYel}$LOCALZONE${Rst}"
 
-chrootsh wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /etc/locale.gen
+wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /mnt/etc/locale.gen
 Error $? "$ER Failed to setup locales" "$IF locales \t{BIYel}`cat /mnt/etc/locale.gen`${Rst}"
 
 chrootsh locale-gen
 Error $? "$ER Failed to generate locales" "$IF locales generated"
 
-chrootsh wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /etc/vconsole.conf
+wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /mnt/etc/vconsole.conf
 Error $? "$ER Failed to setup vconsole" "$IF locales: \t{BIYel}`cat /mnt/etc/vconsole.conf`${Rst}"
 
 chrootsh mkinitcpio -p linux
