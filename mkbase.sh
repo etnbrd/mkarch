@@ -72,20 +72,19 @@ chrootsh ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
 Error $? "$ER Failed to setup localtime" "$IF localtime \t${BIYel}$LOCALZONE${Rst}"
 
 wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /mnt/etc/locale.gen
-Error $? "$ER Failed to setup locales" "$IF locales \t{BIYel}`cat /mnt/etc/locale.gen`${Rst}"
+Error $? "$ER Failed to setup locales" "$IF locales \t${BIYel}`cat /mnt/etc/locale.gen`${Rst}"
 
 chrootsh locale-gen
 Error $? "$ER Failed to generate locales" "$IF locales generated"
 
 wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /mnt/etc/vconsole.conf
-Error $? "$ER Failed to setup vconsole" "$IF locales: \t{BIYel}`cat /mnt/etc/vconsole.conf`${Rst}"
+Error $? "$ER Failed to setup vconsole" "$IF locales: \t${BIYel}`cat /mnt/etc/vconsole.conf`${Rst}"
 
 chrootsh mkinitcpio -p linux
 Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
-chrootsh echo "[archlinuxfr]
-              SigLevel = Never
-              Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf;
+# TODO get the complete pacman.conf
+chrootsh echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf;
 
 chrootsh pacman -Sy yaourt;
 
