@@ -78,13 +78,13 @@ chrootsh locale-gen
 Error $? "$ER Failed to generate locales" "$IF locales generated"
 
 wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /mnt/etc/vconsole.conf
-Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vconsole.conf | sed s/\n/\n\t/`${Rst}"
+Error $? "$ER Failed to setup vconsole" "$IF vconsole\n\t${BIYel}`cat /mnt/etc/vconsole.conf | sed s_^_\\t_`${Rst}"
 
 chrootsh mkinitcpio -p linux
 Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
 # TODO get the complete pacman.conf
-chrootsh echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf;
+chrootsh echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/\\$arch" >> /etc/pacman.conf;
 
 chrootsh pacman -Sy yaourt;
 
