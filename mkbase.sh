@@ -96,4 +96,4 @@ wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
 
 chrootsh pacman -Sy yaourt
 
-chrootsh yaourt salt
+chrootsh yaourt -S salt
