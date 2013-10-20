@@ -63,13 +63,14 @@ done
 
 # echo "${BIGre}>>${BIWhi} Success${Rst}, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
 
+chrootsh rm /etc/localtime;
+chrootsh ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
+Error $? "$ER Failed to setup localtime" "$IF localtime \t{BIYel}$LOCALZONE${Rst}"
+
 # arch-chroot /mnt << EOF
 chrootsh echo $HOSTNAME > /etc/hostname;
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
-chrootsh rm /etc/localtime;
-chrootsh ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
-Error $? "$ER Failed to setup localtime" "$IF localtime \t{BIYel}$LOCALZONE${Rst}"
 
 # chrootsh "wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /etc/locale.gen"
 # Error $? "$ER Failed to setup locales" "$IF locales \t{BIYel}`cat /mnt/etc/locale.gen`${Rst}"
