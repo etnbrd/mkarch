@@ -90,7 +90,7 @@ chrootsh grub-mkconfig -o /boot/grub/grub.cfg
 
 
 # TODO get the complete pacman.conf
-wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - > /mnt/etc/pacman.conf
+wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
 # chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
 # chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
 
