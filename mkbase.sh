@@ -78,7 +78,7 @@ chrootsh locale-gen
 Error $? "$ER Failed to generate locales" "$IF locales generated"
 
 wget ${SOURCE}/hosts/$HOSTNAME/vconsole.conf -qO - > /mnt/etc/vconsole.conf
-Error $? "$ER Failed to setup vconsole" "$IF locales: \t${BIYel}`cat /mnt/etc/vconsole.conf`${Rst}"
+Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vconsole.conf | sed s/\n/\n\t/`${Rst}"
 
 chrootsh mkinitcpio -p linux
 Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
