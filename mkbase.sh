@@ -65,7 +65,7 @@ done
 # echo "${BIGre}>>${BIWhi} Success${Rst}, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
 
 # arch-chroot /mnt << EOF
-chrootsh echo $HOSTNAME > /etc/hostname;
+chrootsh echo $HOSTNAME > /etc/hostname
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
 chrootsh rm /etc/localtime
@@ -86,7 +86,8 @@ Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
 # TODO get the complete pacman.conf
 chrootsh echo $arch
-chrootsh echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf;
+chrootsh cat /etc/pacman.conf.bak > /etc/pacman.conf
+chrootsh echo "[archlinuxfr]\n  SigLevel = Never\n  Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
 
 chrootsh pacman -Sy yaourt;
 
