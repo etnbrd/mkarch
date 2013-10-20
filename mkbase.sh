@@ -85,9 +85,9 @@ Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vco
 # Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
 # TODO get the complete pacman.conf
-chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
-# wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - > /mnt/etc/pacman.conf
-chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
+wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - > /mnt/etc/pacman.conf
+# chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
+# chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
 
 chrootsh pacman -Sy yaourt
 
