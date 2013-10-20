@@ -85,11 +85,10 @@ Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vco
 # Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
 # TODO get the complete pacman.conf
-chrootsh echo $arch
-chrootsh "cat /etc/pacman.conf.bak > /etc/pacman.conf"
+chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
 chrootsh echo -en "[archlinuxfr]\\\n\\\tSigLevel = Never\\\n\\\tServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
 
-chrootsh pacman -Sy yaourt;
+chrootsh pacman -Sy yaourt
 
 # TODO do the bootloader
 # TODO do the root password
