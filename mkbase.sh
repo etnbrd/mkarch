@@ -96,4 +96,4 @@ chrootsh pacman -Sy --noconfirm yaourt &&
 chrootsh yaourt -Sy --noconfirm salt
 Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
 
-echo "${BIGre}>>${BIWhi}Basecamp established, starting campfire :)${Rst}"
+echo "${BIGre}>>${BIWhi} Basecamp established, starting campfire :)${Rst}"
