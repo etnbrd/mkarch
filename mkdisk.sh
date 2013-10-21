@@ -77,7 +77,7 @@ quiet umount /mnt/{home,};
 quiet sgdisk -o $DISK_DEVICE;                                  # Clear partition
 Error $? "$ER Couldn't Clear Partition" "$IF Disk erased successfully";
 
-quiet sgdisk -n 1:0:1007K -t 1:0xEF02 -c 1:'boot' $DISK_DEVICE;
+sgdisk -n 1:0:1007K -t 1:0xEF02 -c 1:'boot' $DISK_DEVICE;
 Error $? "$ER Couldn't create boot partition" "$IF Boot partition created"
 
 quiet sgdisk -n 2:1007K:+$ROOT_SIZE -c 2:'root' $DISK_DEVICE;      # Create root partition
