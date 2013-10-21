@@ -71,5 +71,6 @@ quiet() {
 }
 
 chrootsh() {
-  arch-chroot /mnt /bin/sh -c "$*"
+  arch-chroot /mnt $*
+  # arch-chroot /mnt /bin/sh -c "$*"
 }
