@@ -48,10 +48,10 @@ done
 
 quiet umount /mnt/{home,};
 
-quiet mkfs.$ROOT_FS ${DISK_DEVICE}1 -L root;
+quiet mkfs.$ROOT_FS ${DISK_DEVICE}2 -L root;
 Error $? "$ER couldn't create root filesystem" "$IF root filesystem created"
 
 if [[ $HOME_FS != false ]]; then
-  quiet mkfs.$HOME_FS ${DISK_DEVICE}2 -L home;
+  quiet mkfs.$HOME_FS ${DISK_DEVICE}3 -L home;
   Error $? "$ER couldn't create home filesystem" "$IF home filesystem created"
 fi

@@ -51,11 +51,12 @@ done
 
 quiet umount /mnt/{home,};
 
-mount ${DISK_DEVICE}1 /mnt &&
+mount ${DISK_DEVICE}2 /mnt &&
 mkdir -p /mnt/home &&
-mount ${DISK_DEVICE}2 /mnt/home;
+mount ${DISK_DEVICE}3 /mnt/home;
 Error $? "$ER Failed to mount partitions" "$IF Partitions mounted";
 
+# TODO fix this, can't find target base base-devel when using $BASE
 pacstrap /mnt base base-devel;
 Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF pacstrap successful";
 
