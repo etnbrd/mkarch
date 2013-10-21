@@ -15,6 +15,7 @@ HOSTNAME=arch-srv;
 MKDISK=true;
 MKPART=true;
 MKBASE=true;
+MKSALT=true;
 
 SOURCE="https://raw.github.com/gravitezero/mkarch/master";
 
@@ -32,6 +33,7 @@ AskPw "Root passwd ?" ROOT_PWD
 Ask "Make disk ?" MKDISK
 Ask "Make part ?" MKPART
 Ask "Make base ?" MKBASE
+Ask "Make salt ?" MKSALT
 
 wget -q --spider ${SOURCE}/hosts/$HOSTNAME/init.sh;
 Error $? "$ER hosts/${HOSTNAME}/init.sh doesn't exist";
@@ -50,4 +52,8 @@ fi
 if [[ $MKBASE = true ]]; then
   echo -e "\n>$IF Making base"
   source <(wget ${SOURCE}/mkbase.sh -qO -);
+fi
+if [[ $MKSALT = true ]]; then
+  echo -e "\n>$IF Making salt"
+  source <(wget ${SOURCE}/mksalt.sh -qO -);
 fi

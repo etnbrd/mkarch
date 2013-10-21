@@ -89,20 +89,3 @@ chrootsh pacman -Sy --noconfirm grub &&
 chrootsh grub-install --target=i386-pc --recheck $DISK_DEVICE &&
 chrootsh grub-mkconfig -o /boot/grub/grub.cfg
 Error $? "$ER Failed to setup grub" "$IF grub installed"
-
-# TODO get the complete pacman.conf
-wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
-# chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
-
-chrootsh pacman -Sy --noconfirm yaourt &&
-chrootsh yaourt -Sy --noconfirm salt
-Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
-
-echo "${BIGre}>>${BIWhi} Basecamp established, starting campfire :)${Rst}"
-
-# TODO states should be stored in home
-wget https://github.com/gravitezero/mkarch/archive/master.tar.gz;
-tar xzvf master.tar.gz;
-mv mkarch-master/hosts/$HOSTNAME/salt /srv
-
-chrootsh salt-call --local state.highstate
