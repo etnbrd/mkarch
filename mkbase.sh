@@ -95,3 +95,5 @@ wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
 chrootsh pacman -Sy --noconfirm yaourt
 
 chrootsh yaourt -Sy --noconfirm salt
+
+# chrootsh passwd < echo $ROOT_PWD
