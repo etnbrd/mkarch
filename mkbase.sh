@@ -62,7 +62,7 @@ Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF pacstrap successful";
 
 genfstab -U -p /mnt >> /mnt/etc/fstab;
 
-chrootsh "echo -e '$ROOT_PWD\n$ROOT_PWD' | passwd"
+chrootsh echo -e '$ROOT_PWD\n$ROOT_PWD' | passwd
 Error $? "$ER Failed to set root passwd" "$IF root passwd"
 
 chrootsh "echo $HOSTNAME > /etc/hostname"
