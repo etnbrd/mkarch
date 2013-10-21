@@ -28,7 +28,7 @@ wget -q --spider ${SOURCE}/mkbase.sh;
 Error $? "$ER ressource not available" "$IF ressources available";
 
 Ask "Host ?" HOSTNAME
-Ask "Root passwd ?" ROOT_PWD
+AskPw "Root passwd ?" ROOT_PWD
 Ask "Make disk ?" MKDISK
 Ask "Make part ?" MKPART
 Ask "Make base ?" MKBASE

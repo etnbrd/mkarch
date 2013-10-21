@@ -87,7 +87,6 @@ chrootsh pacman -Sy --noconfirm grub
 chrootsh grub-install --target=i386-pc --recheck $DISK_DEVICE
 chrootsh grub-mkconfig -o /boot/grub/grub.cfg
 
-
 # TODO get the complete pacman.conf
 chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
 wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf

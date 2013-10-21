@@ -43,6 +43,20 @@ Ask() {
   done
 }
 
+AskPw() {
+  while true
+  do
+    if [[ -z ${(P)2} ]]; then
+      echo -ne "$PR $1 ${Rst}";
+    fi
+    read -s tmp;
+    eval "$2=$tmp";
+    if [[ -n ${(P)2} ]]; then
+      break;
+    fi
+  done
+}
+
 Error() {
   if [[ $1 != 0 ]]; then
     echo -e $2 ${Rst};
