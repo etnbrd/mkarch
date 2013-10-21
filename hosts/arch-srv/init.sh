@@ -15,7 +15,7 @@ Init() {
 
   arch=i686
 
-  BASE="base" # Here only the strict minimum, the rest should be in the salt configuration
+  BASE="base base-devel" # Here only the strict minimum, the rest should be in the salt configuration
   HOSTNAME="arch-srv"
   LOCALZONE="Europe/Paris"
   PWD="password"
