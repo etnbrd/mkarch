@@ -72,6 +72,7 @@ chrootsh rm -f /etc/localtime
 chrootsh ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
 Error $? "$ER Failed to setup localtime" "$IF localtime \t${BIYel}$LOCALZONE${Rst}"
 
+#TODO fix this, error bsdtar: Failed to set default locale
 wget ${SOURCE}/hosts/$HOSTNAME/locale.gen -qO - > /mnt/etc/locale.gen
 Error $? "$ER Failed to setup locales" "$IF locales \t${BIYel}`cat /mnt/etc/locale.gen`${Rst}"
 
@@ -90,7 +91,6 @@ chrootsh grub-mkconfig -o /boot/grub/grub.cfg
 Error $? "$ER Failed to setup grub" "$IF grub installed"
 
 # TODO get the complete pacman.conf
-chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
 wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
 # chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
 
@@ -99,3 +99,10 @@ chrootsh yaourt -Sy --noconfirm salt
 Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
 
 echo "${BIGre}>>${BIWhi} Basecamp established, starting campfire :)${Rst}"
+
+# TODO states should be stored in home
+wget https://github.com/gravitezero/mkarch/archive/master.tar.gz;
+tar xzvf master.tar.gz;
+mv mkarch-master/hosts/$HOSTNAME/salt /srv
+
+chrootsh salt-call --local state.highstate
