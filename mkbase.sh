@@ -84,17 +84,18 @@ Error $? "$ER Failed to setup vconsole" "$IF vconsole\n${BIYel}`cat /mnt/etc/vco
 chrootsh mkinitcpio -p linux
 Error $? "$ER Failed to make initramfs" "$IF intiramfs created"
 
-chrootsh pacman -Sy --noconfirm grub;
-chrootsh grub-install --target=i386-pc --recheck $DISK_DEVICE;
-chrootsh grub-mkconfig -o /boot/grub/grub.cfg;
+chrootsh pacman -Sy --noconfirm grub &&
+chrootsh grub-install --target=i386-pc --recheck $DISK_DEVICE &&
+chrootsh grub-mkconfig -o /boot/grub/grub.cfg
+Error $? "$ER Failed to setup grub" "$IF grub installed"
 
-# # TODO get the complete pacman.conf
-# chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
-# wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
-# # chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
+# TODO get the complete pacman.conf
+chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
+wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
+# chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
 
-# chrootsh pacman -Sy --noconfirm yaourt &&
-# chrootsh yaourt -Sy --noconfirm salt
-# Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
+chrootsh pacman -Sy --noconfirm yaourt &&
+chrootsh yaourt -Sy --noconfirm salt
+Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
 
 echo "${BIGre}>>${BIWhi} Basecamp established, starting campfire :)${Rst}"
