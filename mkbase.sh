@@ -57,16 +57,17 @@ mount ${DISK_DEVICE}2 /mnt/home;
 Error $? "$ER Failed to mount partitions" "$IF Partitions mounted";
 
 pacstrap /mnt base base-devel;
-Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF Basecamp established, starting campfire :)";
+Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF pacstrap successful";
 
 genfstab -U -p /mnt >> /mnt/etc/fstab;
 
-echo "${BIGre}>>${BIWhi} Success${Rst}, we made it to the ARCH-CHROUT, time to unpack salt, and let it roll :)";
+chrootsh "passwd < echo $ROOT_PWD"
+Error $? "$ER Failed to set root passwd" "$IF root passwd"
 
 chrootsh "echo $HOSTNAME > /etc/hostname"
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
-chrootsh rm /etc/localtime
+chrootsh rm -f /etc/localtime
 chrootsh ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
 Error $? "$ER Failed to setup localtime" "$IF localtime \t${BIYel}$LOCALZONE${Rst}"
 
@@ -92,8 +93,8 @@ chrootsh cp /etc/pacman.conf.bak /etc/pacman.conf
 wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
 # chrootsh echo -e '[archlinuxfr]\\\\n\\\\tSigLevel = Never\\\\n\\\\tServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
 
-chrootsh pacman -Sy --noconfirm yaourt
-
+chrootsh pacman -Sy --noconfirm yaourt &&
 chrootsh yaourt -Sy --noconfirm salt
+Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
 
-# chrootsh passwd < echo $ROOT_PWD
+echo "${BIGre}>>${BIWhi}Basecamp established, starting campfire :)${Rst}"
