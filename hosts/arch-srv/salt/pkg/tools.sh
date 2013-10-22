@@ -5,7 +5,3 @@ zsh:
 git:
   pkg:
     - latest
-
-oh-my-zsh-git:
-  pkg:
-    - latest
