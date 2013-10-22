@@ -6,3 +6,4 @@ etnbrd:
     - groups:
       - wheel
       - storage
+  group.present:

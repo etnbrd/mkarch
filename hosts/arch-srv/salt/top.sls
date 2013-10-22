@@ -1,4 +1,4 @@
 base:
   '*':
     - users
-    - pkgs.tools
+    - packages.tools
