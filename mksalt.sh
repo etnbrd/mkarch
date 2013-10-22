@@ -19,9 +19,10 @@
 
 # TODO states should be stored in home
 # TODO find another way to get states
-rm -rf /mnt/srv/salt
+rm -rf /mnt/srv/salt;
 wget -q https://github.com/gravitezero/mkarch/archive/master.tar.gz;
 quiet tar xzvf master.tar.gz;
 mv mkarch-master/hosts/$HOSTNAME/salt /mnt/srv;
+rm -rf master.tar.gz mkarch-master;
 
 chrootsh salt-call --local state.highstate
