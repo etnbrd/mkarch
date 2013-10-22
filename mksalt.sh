@@ -18,6 +18,8 @@
 # echo "${BIGre}>>${BIWhi} Basecamp established, starting campfire :)${Rst}"
 
 # TODO states should be stored in home
+# TODO find another way to get states
+rm -rf /mnt/srv/salt
 wget -q https://github.com/gravitezero/mkarch/archive/master.tar.gz;
 quiet tar xzvf master.tar.gz;
 mv mkarch-master/hosts/$HOSTNAME/salt /mnt/srv;
