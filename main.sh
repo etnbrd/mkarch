@@ -12,9 +12,9 @@
 
 ASK=false;
 HOSTNAME=arch-srv;
-MKDISK=true;
-MKPART=true;
-MKBASE=true;
+MKDISK=false;
+MKPART=false;
+MKBASE=false;
 MKSALT=true;
 
 SOURCE="https://raw.github.com/gravitezero/mkarch/master";
