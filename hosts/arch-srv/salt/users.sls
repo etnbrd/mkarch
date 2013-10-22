@@ -4,8 +4,8 @@ etnbrd:
     - shell: /bin/zsh
     - home: /home/etnbrd
     - createhome: true
-    - uid: 500
-    - gid: 500
+    - uid: 501
+    - gid: 501
     - groups:
       - wheel
       - storage
