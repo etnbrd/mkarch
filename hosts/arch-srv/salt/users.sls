@@ -6,3 +6,5 @@ etnbrd:
     - groups:
       - wheel
       - storage
+    - require:
+      - pkg: zsh
