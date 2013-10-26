@@ -5,8 +5,6 @@ nginx:
     - running
     - enable: True
     - reload: True
-    - watch:
-      - pkg: nginx
 
 mariadb:
   pkg:
@@ -15,8 +13,6 @@ mariadb:
     - running
     - enable: True
     - reload: True
-    - watch:
-      - pkg: mariadb
 
 php-fpm:
   pkg:
@@ -25,5 +21,3 @@ php-fpm:
     - running
     - enable: True
     - reload: True
-    - watch:
-      - pkg: php-fpm
