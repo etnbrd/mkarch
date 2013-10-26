@@ -4,3 +4,4 @@ base:
     - pkg.sshd
     - pkg.tools
     - pkg.nodejs
+    - pkg.lemp
