@@ -6,4 +6,4 @@ openssh:
     - enable: True
     - reload: True
     - watch:
-      - pkg: sshd
+      - pkg: openssh
