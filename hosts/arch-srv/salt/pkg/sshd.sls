@@ -1,9 +1,6 @@
 openssh:
   pkg:
     - latest
-  service:
-    - running
+  service.running:
     - enable: True
     - reload: True
-    - watch:
-      - pkg: openssh
