@@ -62,11 +62,11 @@ Error $? "$ER ${BWhi}pacstrap${Rst} failed" "$IF pacstrap successful";
 
 genfstab -U -p /mnt >> /mnt/etc/fstab;
 
+echo $HOSTNAME > /mnt/etc/hostname
+Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
+
 chrootsh echo -e '$ROOT_PWD\n$ROOT_PWD' | quiet passwd
 Error $? "$ER Failed to set root passwd" "$IF root passwd"
-
-chrootsh echo $HOSTNAME > /etc/hostname
-Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
 chrootsh rm -f /etc/localtime
 chrootsh ln -s /usr/share/zoneinfo/$LOCALZONE /etc/localtime
@@ -90,6 +90,7 @@ chrootsh grub-install --target=i386-pc --recheck $DISK_DEVICE &&
 chrootsh grub-mkconfig -o /boot/grub/grub.cfg
 Error $? "$ER Failed to setup grub" "$IF grub installed"
 
+chrootsh pacman -Sy --noconfirm openssh &&
 chrootsh systemctl enable sshd;
 Error $? "$ER Failed to enable sshd" "$IF sshd enabled"
 
