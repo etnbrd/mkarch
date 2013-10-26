@@ -1,8 +1,8 @@
-etnbrd:
+etn:
   user.present:
     - fullname: Etienne Brodu
     - shell: /bin/zsh
-    - home: /home/etnbrd
+    - home: /home/etn
     - groups:
       - wheel
       - storage
