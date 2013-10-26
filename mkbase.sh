@@ -89,3 +89,8 @@ chrootsh pacman -Sy --noconfirm grub &&
 chrootsh grub-install --target=i386-pc --recheck $DISK_DEVICE &&
 chrootsh grub-mkconfig -o /boot/grub/grub.cfg
 Error $? "$ER Failed to setup grub" "$IF grub installed"
+
+chrootsh systemctl enable sshd;
+Error $? "$ER Failed to enable sshd" "$IF sshd enabled"
+
+# TODO make mkpost launch at reboot
