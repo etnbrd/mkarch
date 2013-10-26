@@ -1,4 +1,5 @@
 sshd:
+  name: openssh
   pkg:
     - latest
   service:
