@@ -65,7 +65,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab;
 echo $HOSTNAME > /mnt/etc/hostname
 Error $? "$ER Failed to setup hostname" "$IF hostname \t${BIYel}`cat /mnt/etc/hostname`${Rst}"
 
-echo -e '$ROOT_PWD\n$ROOT_PWD' | passwd -q -R /mnt
+chrootsh passwd < <(echo -e "$ROOT_PWD\n$ROOT_PWD")
 Error $? "$ER Failed to set root passwd" "$IF root passwd"
 
 chrootsh rm -f /etc/localtime
