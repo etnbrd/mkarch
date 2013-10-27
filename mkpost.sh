@@ -1,10 +1,11 @@
-#!/bin/zsh
+#!/bin/sh
 #
 # mkpost.sh by etnbrd
 # This script install the salted system
 
 # The one-liner :)
 # zsh <(curl -s https://raw.github.com/gravitezero/mkarch/master/mkpost.sh);
+# curl -s https://raw.github.com/gravitezero/mkarch/master/mkpost.sh | sh
 
 #####################################################
 # COMMANDS                                          #
