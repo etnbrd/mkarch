@@ -17,11 +17,11 @@ HOSTNAME=`cat /etc/hostname`;
 curl -s ${SOURCE}/utils.sh | source /dev/stdin;
 
 # TODO get the complete pacman.conf
-curl -s ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo >> /mnt/etc/pacman.conf
+curl -s ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo >> /etc/pacman.conf
 # wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
 
-chrootsh pacman -Sy --noconfirm yaourt &&
-chrootsh yaourt -Sy --noconfirm salt
+pacman -Sy --noconfirm yaourt &&
+yaourt -Sy --noconfirm salt
 Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
 
 # TODO states should be stored in home
