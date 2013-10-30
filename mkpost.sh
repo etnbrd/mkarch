@@ -14,7 +14,7 @@
 SOURCE="https://raw.github.com/gravitezero/mkarch/master";
 HOSTNAME=`cat /etc/hostname`;
 
-source <(curl -s ${SOURCE}/utils.sh);
+source $(curl -s ${SOURCE}/utils.sh);
 
 # TODO get the complete pacman.conf
 curl -s ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo >> /mnt/etc/pacman.conf

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 #
 # utils.sh by etnbrd
 # This script regroup a few utilities used
@@ -26,7 +26,7 @@ ER="${Red}>${BIRed}>${IRed} Error${Rst}:";
 Ask() {
   while true
   do
-    if [[ -z ${(P)2} ]]; then
+    if [[ -z ${!2} ]]; then
       echo -ne "$PR $1 ${Rst}";
     elif [[ $ASK != false ]]; then
       echo -ne "$PR $1 ${Rst}[${IBla}${(P)2}${Rst}] ";
@@ -46,7 +46,7 @@ Ask() {
 AskPw() {
   while true
   do
-    if [[ -z ${(P)2} ]]; then
+    if [[ -z ${!2} ]]; then
       echo -ne "$PR $1 ${Rst}";
     fi
     read -s tmp;
