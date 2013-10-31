@@ -15,7 +15,7 @@ SOURCE="https://raw.github.com/gravitezero/mkarch/master";
 HOSTNAME=`cat /etc/hostname`;
 
 curl -sL -o master.tar.gz https://github.com/gravitezero/mkarch/archive/master.tar.gz;
-tar xzvf master.tar.gz;
+tar xzf master.tar.gz;
 
 source mkarch-master/utils.sh
 # curl -s ${SOURCE}/utils.sh | source /dev/stdin;
