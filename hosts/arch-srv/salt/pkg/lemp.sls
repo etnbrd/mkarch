@@ -9,6 +9,7 @@ mariadb:
   pkg:
     - latest
   service.running:
+    - name: mysqld
     - enable: True
     - reload: True
 
