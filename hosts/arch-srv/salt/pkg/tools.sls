@@ -1,8 +1,8 @@
-{% for pkg in [
-'zsh',
-'git',
-'rsync'
-] %}
-{{ pkg }}:
+zsh:
   pkg.latest
-{% endfor %}
+
+git
+  pkg.latest
+
+rsync
+  pkg.latest
