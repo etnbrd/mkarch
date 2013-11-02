@@ -1,7 +1,8 @@
-zsh:
-  pkg:
-    - latest
-
-git:
-  pkg:
-    - latest
+{% for pkg in [
+'zsh',
+'git',
+'rsync'
+] %}
+{{ pkg }}:
+  pkg.latest
+{% endfor %}
