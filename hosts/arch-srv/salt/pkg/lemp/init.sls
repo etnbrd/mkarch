@@ -1,24 +1,24 @@
 nginx:
-  pkg:
-    - latest
+  pkg.latest
   service.running:
     - enable: True
     - reload: True
 
 mariadb:
-  pkg:
-    - latest
+  pkg.latest
   service.running:
     - name: mysqld
     - enable: True
     - reload: True
 
 php-fpm:
-  pkg:
-    - latest
+  pkg.latest
   service.running:
     - enable: True
     - reload: True
+
+php-gd:
+  pkg.latest
 
 /etc/nginx/nginx.conf:
   file.managed:
