@@ -22,12 +22,12 @@ source mkarch-master/utils.sh
 # source <(curl -s ${SOURCE}/utils.sh);
 
 # TODO get the complete pacman.conf
-curl -s ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo >> /etc/pacman.conf
+# curl -s ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo >> /etc/pacman.conf
 # wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
 
-pacman -Sy --noconfirm yaourt &&
-yaourt -Sy --noconfirm salt
-Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
+# pacman -Sy --noconfirm yaourt &&
+# yaourt -Sy --noconfirm salt
+# Error $? "$ER Failed to install yaourt and salt" "$IF yaourt and salt installed"
 
 # TODO states should be stored in home
 # TODO find another way to get states
