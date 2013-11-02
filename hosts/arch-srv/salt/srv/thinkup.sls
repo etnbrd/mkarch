@@ -1,9 +1,9 @@
 thinkup:
   git.latest:
     - name: http://github.com/ginatrapani/ThinkUp
-    - target: /usr/share/thinkup
+    - target: /usr/share/lib/thinkup
     - rev: master
-  cmd.run:
-    - name: ln -s /usr/share/thinkup/webapp /srv/http/thinkup
+  cmd.wait:
+    - name: ln -s /usr/share/lib/thinkup/webapp /srv/http/thinkup
     - watch:
       - git: thinkup
