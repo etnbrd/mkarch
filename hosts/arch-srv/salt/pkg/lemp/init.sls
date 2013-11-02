@@ -29,3 +29,10 @@ php-gd:
     - user: root
     - group: root
     - mode: 644
+
+/etc/php/php.ini:
+  file.managed:
+    - source: salt://pkg/lemp/php.ini
+    - user: root
+    - group: root
+    - mode: 644
