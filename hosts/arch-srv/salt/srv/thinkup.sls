@@ -4,6 +4,6 @@ thinkup:
     - target: /usr/share/lib/thinkup
     - rev: master
   cmd.run:
-    - name: rsync -av /usr/share/lib/thinkup/webapp/ /srv/http/thinkup; chmod -R 777 /srv/http/thinkup/data/
+    - name: rsync -av /usr/share/lib/thinkup/webapp/ /srv/http/thinkup; chown -R http /srv/http/thinkup; chmod -R 777 /srv/http/thinkup/data/
     - watch:
       - git: thinkup
