@@ -9,4 +9,3 @@ thinkup:
       - git: thinkup
   require:
     - pkg: php-gd
-    - pkg: 
