@@ -1,8 +1,8 @@
 zsh:
   pkg.latest
 
-git
+git:
   pkg.latest
 
-rsync
+rsync:
   pkg.latest
