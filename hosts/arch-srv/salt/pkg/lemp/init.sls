@@ -5,6 +5,9 @@ nginx:
     - enable: True
     - reload: True
 
+python-mysqldb:
+  -pkg.latest
+
 mariadb:
   pkg:
     - latest
@@ -18,6 +21,7 @@ mariadb:
     - password: {{ salt['pillar.get']('mariadb_root_pw') }}
     - require:
       - service: mariadb
+      - pkg: python-mysqldb
 
 php-fpm:
   pkg:
