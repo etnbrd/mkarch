@@ -22,3 +22,5 @@ thinkup:
     - database: thinkup.*
     - user: thinkup
     - host: localhost
+    - connection_user: root
+    - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
