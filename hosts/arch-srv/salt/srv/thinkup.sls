@@ -23,7 +23,7 @@ thinkup:
     - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
 
 thinkup:
-   mysql_grants.present:
+  mysql_grants.present:
     - grant: all privileges
     - database: thinkup.*
     - user: thinkup
