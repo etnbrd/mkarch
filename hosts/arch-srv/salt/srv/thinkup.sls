@@ -9,20 +9,14 @@ thinkup:
       - git: thinkup
   require:
     - pkg: php-gd
-
-thinkup:
   mysql_user.present:
     - host: localhost
     - password: {{ salt['pillar.get']('mariadb_user_pw') }}
     - connection_user: root
     - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
-
-thinkup:
   mysql_database.present:
     - connection_user: root
     - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
-
-thinkup:
   mysql_grants.present:
     - grant: all privileges
     - database: thinkup.*
