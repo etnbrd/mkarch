@@ -6,7 +6,7 @@ nginx:
     - reload: True
 
 mysql-python:
-  - pkg.latest
+  pkg.latest
 
 mariadb:
   pkg:
