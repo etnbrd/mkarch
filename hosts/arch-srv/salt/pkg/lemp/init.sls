@@ -5,8 +5,8 @@ nginx:
     - enable: True
     - reload: True
 
-python-mysqldb:
-  -pkg.latest
+mysql-python:
+  - pkg.latest
 
 mariadb:
   pkg:
