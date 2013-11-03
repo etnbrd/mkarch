@@ -21,7 +21,7 @@ mariadb:
     - password: {{ salt['pillar.get']('mariadb_root_pw') }}
     - require:
       - service: mariadb
-      - pkg: python-mysqldb
+      - pkg: mysql-python
 
 php-fpm:
   pkg:
