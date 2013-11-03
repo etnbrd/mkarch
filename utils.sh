@@ -55,6 +55,7 @@ AskPw() {
       break;
     fi
   done
+  echo
 }
 
 Error() {
