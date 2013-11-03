@@ -12,6 +12,12 @@ mariadb:
     - name: mysqld
     - enable: True
     - reload: True
+  mysql_user:
+    - present
+    - name: root
+    - password: {{ salt['pillar.get']('mariadb_root_pw') }}
+    - require:
+      - service: mariadb
 
 php-fpm:
   pkg:
