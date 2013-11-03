@@ -5,7 +5,7 @@
 
 # The one-liner :)
 # zsh <(curl -s https://raw.github.com/gravitezero/mkarch/master/mkpost.sh);
-# curl -s https://raw.github.com/gravitezero/mkarch/master/mkpost.sh | sh
+# sh <(curl -s https://raw.github.com/gravitezero/mkarch/master/mkpost.sh);
 
 #####################################################
 # COMMANDS                                          #

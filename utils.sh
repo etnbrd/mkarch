@@ -37,7 +37,7 @@ Ask() {
     if [[ -n $tmp ]]; then
       eval "$2=$tmp";
     fi
-    if [[ -n ${(P)2} ]]; then
+    if [[ -n ${!2} ]]; then
       break;
     fi
   done
@@ -51,7 +51,7 @@ AskPw() {
     fi
     read -s tmp;
     eval "$2=$tmp";
-    if [[ -n ${(P)2} ]]; then
+    if [[ -n ${!2} ]]; then
       break;
     fi
   done
