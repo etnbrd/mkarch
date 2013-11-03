@@ -3,6 +3,7 @@ etn:
     - fullname: Etienne Brodu
     - shell: /bin/zsh
     - home: /home/etn
+    - password: {{ salt['pillar.get']('user_pw') }}
     - groups:
       - wheel
       - storage

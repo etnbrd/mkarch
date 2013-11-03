@@ -21,6 +21,12 @@ source mkarch-master/utils.sh
 # curl -s ${SOURCE}/utils.sh | source /dev/stdin;
 # source <(curl -s ${SOURCE}/utils.sh);
 
+# TODO put a structure of all the variables that need to be send to pillar in the init.sh
+AskPw "User password ? " USER_PW
+AskPw "MariaDb root password ? " MDB_ROOT_PW
+AskPw "MariaDb thinkup password ? " MDB_USER_PW
+
+
 # TODO get the complete pacman.conf
 # curl -s ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo >> /etc/pacman.conf
 # wget ${SOURCE}/hosts/$HOSTNAME/archlinuxfr.repo -qO - >> /mnt/etc/pacman.conf
@@ -35,4 +41,4 @@ rm -rf /srv/salt;
 mv mkarch-master/hosts/$HOSTNAME/salt /srv;
 rm -rf master.tar.gz mkarch-master;
 
-salt-call --local state.highstate
+salt-call --local state.highstate pillar='{user_pw: "$USER_PW", mariadb_root_pw: "$MDB_ROOT_PW", mariadb_user_pw: "$MDB_USER_PW"}'
