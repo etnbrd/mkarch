@@ -9,6 +9,7 @@ thinkup:
       - git: thinkup
   require:
     - pkg: php-gd
+    - pkg: mariadb
   mysql_user.present:
     - host: localhost
     - password: {{ salt['pillar.get']('mariadb_user_pw') }}

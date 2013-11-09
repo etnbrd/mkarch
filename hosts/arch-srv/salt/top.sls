@@ -5,4 +5,3 @@ base:
     - pkg.tools
     - pkg.nodejs
     - pkg.lemp
-    - srv.thinkup
