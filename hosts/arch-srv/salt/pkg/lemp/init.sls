@@ -19,6 +19,8 @@ mariadb:
     - present
     - name: root
     - password_hash: '*639C3D4E2A19BCE8C48D40326378DC7039F43D90'
+    - connection_user: root
+    - connection_pass: "{{ salt['pillar.get']('mariadb_root_pw') }}"
     - require:
       - service: mariadb
       - pkg: mysql-python
