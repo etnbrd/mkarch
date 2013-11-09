@@ -12,16 +12,16 @@ thinkup:
     - pkg: mariadb
   mysql_user.present:
     - host: localhost
-    - password: {{ salt['pillar.get']('mariadb_user_pw') }}
+    - password: ''{{ salt['pillar.get']('mariadb_user_pw') }}''
     - connection_user: root
-    - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
+    - connection_pass: ''{{ salt['pillar.get']('mariadb_root_pw') }}''
   mysql_database.present:
     - connection_user: root
-    - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
+    - connection_pass: ''{{ salt['pillar.get']('mariadb_root_pw') }}''
   mysql_grants.present:
     - grant: all privileges
     - database: thinkup.*
     - user: thinkup
     - host: localhost
     - connection_user: root
-    - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
+    - connection_pass: ''{{ salt['pillar.get']('mariadb_root_pw') }}''
