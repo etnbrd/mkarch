@@ -23,7 +23,6 @@ set-mysql-root-password:
   - require:
     - service: mariadb
 
-
 php-fpm:
   pkg:
     - latest
@@ -32,6 +31,9 @@ php-fpm:
     - reload: True
 
 php-gd:
+  pkg.latest
+
+sendmail:
   pkg.latest
 
 /etc/nginx/nginx.conf:
