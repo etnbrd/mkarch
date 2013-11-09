@@ -41,6 +41,4 @@ rm -rf /srv/salt;
 mv mkarch-master/hosts/$HOSTNAME/salt /srv;
 rm -rf master.tar.gz mkarch-master;
 
-echo '{user_pw: "'$USER_PW'", mariadb_root_pw: "'$MDB_ROOT_PW'", mariadb_user_pw: "'$MDB_USER_PW'"}'
-
-# salt-call --local state.highstate pillar='{user_pw: "${USER_PW}", mariadb_root_pw: "${MDB_ROOT_PW}", mariadb_user_pw: "${MDB_USER_PW}"}'
+salt-call --local state.highstate pillar='{user_pw: "'$USER_PW'", mariadb_root_pw: "'$MDB_ROOT_PW'", mariadb_user_pw: "'$MDB_USER_PW'"}'
