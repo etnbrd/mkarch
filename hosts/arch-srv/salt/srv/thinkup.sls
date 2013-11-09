@@ -14,7 +14,7 @@ thinkup:
     - host: localhost
     - password: {{ salt['pillar.get']('mariadb_user_pw') }}
     - connection_user: root
-    - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
+    - connection_pass: '{{ salt['pillar.get']('mariadb_root_pw') }}'
   mysql_database.present:
     - connection_user: root
     - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
