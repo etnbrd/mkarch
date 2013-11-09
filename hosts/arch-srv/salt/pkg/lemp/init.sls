@@ -15,22 +15,20 @@ mariadb:
     - name: mysqld
     - enable: True
     - reload: True
-  # mysql_user:
-  #   - present
-  #   - name: root
-  #   - password: {{ salt['pillar.get']('mariadb_root_pw') }}
-  #   - connection_user: root
-  #   - connection_pass: {{ salt['pillar.get']('mariadb_root_pw') }}
-  #   - require:
-  #     - service: mariadb
-  #     - pkg: mysql-python
+  mysql_user:
+    - present
+    - name: root
+    - password: {{ salt['pillar.get']('mariadb_root_pw') }}
+    - require:
+      - service: mariadb
+      - pkg: mysql-python
 
-set-mysql-root-password:
-  cmd.run:
-  - name: 'echo "update user set password=PASSWORD(''{{salt['pillar.get']('mariadb_root_pw')}}'') where User=''root'';flush privileges;" | /usr/bin/env HOME=/ mysql -uroot mysql'
-  - onlyif: '/usr/bin/env HOME=/ mysql -u root'
-  - require:
-    - service: mariadb
+# set-mysql-root-password:
+#   cmd.run:
+#   - name: 'echo "update user set password=PASSWORD(''{{salt['pillar.get']('mariadb_root_pw')}}'') where User=''root'';flush privileges;" | /usr/bin/env HOME=/ mysql -uroot mysql'
+#   - onlyif: '/usr/bin/env HOME=/ mysql -u root'
+#   - require:
+#     - service: mariadb
 
 
 php-fpm:
