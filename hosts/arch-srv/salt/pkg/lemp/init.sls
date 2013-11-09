@@ -33,7 +33,10 @@ php-fpm:
 php-gd:
   pkg.latest
 
-sendmail:
+msmtp:
+  pkg.latest
+
+msmtp-mta:
   pkg.latest
 
 /etc/nginx/nginx.conf:
