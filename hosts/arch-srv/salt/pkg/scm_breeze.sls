@@ -1,6 +1,6 @@
 .scm_breeze:
   git.latest:
-    - name: http://github.com/ndbroadbent/scm_breeze.git ~/.scm_breeze
+    - name: http://github.com/ndbroadbent/scm_breeze.git
     - target: /home/etn/.scm_breeze
     - rev: master
   require:
