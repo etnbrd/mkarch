@@ -79,4 +79,4 @@ postfix:
     - source: salt://pkg/lemp/main.cf
     - user: root
     - group: root
-    - mode: 600
+    - mode: 644
