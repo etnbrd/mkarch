@@ -5,4 +5,6 @@ base:
     - pkg.tools
     - pkg.nodejs
     - pkg.lemp
+    - pkg.oh-my-zsh
+    - pkg.scm_breeze
     - srv.thinkup

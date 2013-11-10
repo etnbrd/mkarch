@@ -68,7 +68,11 @@ php-gd:
 ###################################
 
 postfix:
-  pkg.latest
+  pkg:
+    - latest
+  service.running:
+    - enable: True
+    - reload: True
 
 /etc/postfix/main.cf:
   file.managed:
