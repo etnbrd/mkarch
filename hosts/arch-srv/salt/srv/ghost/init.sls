@@ -1,4 +1,4 @@
-grunt:
+grunt-cli:
   npm:
     - installed
   require:
