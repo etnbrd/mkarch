@@ -1,3 +1,4 @@
 ruby:
   pkg:
     - latest
+
