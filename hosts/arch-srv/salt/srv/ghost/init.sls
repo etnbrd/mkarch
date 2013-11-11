@@ -11,17 +11,10 @@ ghost:
     - submodules: true
     - rev: master
   cmd.wait:
-    - name: npm install
+    - name: 'npm install && grunt'
     - cwd: /srv/http/ghost
     - watch:
       - git: ghost
-  cmd.wait:
-    - name: grunt
-    - cwd: /srv/http/ghost
-    - watch:
-      - git: ghost
-    - require:
-      - cmd: npm install
   require:
     - pkg: nodejs
     - npm: grunt-cli
