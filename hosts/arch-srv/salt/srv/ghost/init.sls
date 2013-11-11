@@ -11,9 +11,15 @@ ghost:
     - submodules: true
     - rev: master
   cmd.wait:
-    - name: npm install; grunt;
+    - name: npm install
+    - cwd: /srv/http/ghost
+    - watch:
+      - git: thinkup
+  cmd.wait:
+    - name: grunt
     - cwd: /srv/http/ghost
     - watch:
       - git: thinkup
   require:
+    - pkg: nodejs
     - npm: grunt-cli
