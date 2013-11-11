@@ -14,4 +14,4 @@ ghost:
     - watch:
       - git: thinkup
   require:
-    - npm: grunt
+    - npm: grunt-cli
