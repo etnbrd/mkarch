@@ -20,6 +20,8 @@ ghost:
     - cwd: /srv/http/ghost
     - watch:
       - git: ghost
+    - require:
+      - cmd: npm install
   require:
     - pkg: nodejs
     - npm: grunt-cli
