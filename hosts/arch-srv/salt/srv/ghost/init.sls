@@ -4,6 +4,12 @@ grunt-cli:
   require:
     - pkg: nodejs
 
+sass:
+  gem:
+    - installed
+  require:
+    - pkg: ruby
+
 ghost:
   git.latest:
     - name: https://github.com/TryGhost/Ghost.git
@@ -18,3 +24,4 @@ ghost:
   require:
     - pkg: nodejs
     - npm: grunt-cli
+    - gem: sass
