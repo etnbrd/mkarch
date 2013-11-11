@@ -14,12 +14,12 @@ ghost:
     - name: npm install
     - cwd: /srv/http/ghost
     - watch:
-      - git: thinkup
+      - git: ghost
   cmd.wait:
     - name: grunt
     - cwd: /srv/http/ghost
     - watch:
-      - git: thinkup
+      - git: ghost
   require:
     - pkg: nodejs
     - npm: grunt-cli
