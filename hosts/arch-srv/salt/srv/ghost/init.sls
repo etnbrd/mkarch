@@ -16,7 +16,7 @@ ghost:
     - target: /srv/http/ghost
     - submodules: true
     - rev: master
-  cmd.wait:
+  cmd.run:
     - name: 'npm install && grunt'
     - cwd: /srv/http/ghost
     - watch:
