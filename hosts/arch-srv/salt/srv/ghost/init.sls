@@ -5,8 +5,8 @@ grunt-cli:
     - pkg: nodejs
 
 sass:
-  gem.installed:
-    - user: nobody
+  cmd.run:
+    - name: gem install --no-user-install sass
   require:
     - pkg: ruby
 
@@ -24,4 +24,4 @@ ghost:
   require:
     - pkg: nodejs
     - npm: grunt-cli
-    - gem: sasssas
+    - cmd: sass
