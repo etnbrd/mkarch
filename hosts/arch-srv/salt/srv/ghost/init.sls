@@ -1,7 +1,7 @@
-grunt-cli:
-  npm.installed:
-    require:
-      - pkg: nodejs
+# grunt-cli:
+#   npm.installed:
+#     require:
+#       - pkg: nodejs
 
 ghost:
   git.latest:
@@ -13,5 +13,5 @@ ghost:
     - cwd: /srv/http/ghost
     - watch:
       - git: thinkup
-  require:
-    - npm: grunt-cli
+  # require:
+  #   - npm: grunt-cli
