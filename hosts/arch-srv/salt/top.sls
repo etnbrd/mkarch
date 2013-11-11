@@ -8,5 +8,4 @@ base:
     - pkg.oh-my-zsh
     - pkg.scm_breeze
     - srv.thinkup
-    # - srv.buddycloud
     - srv.ghost
