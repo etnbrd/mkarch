@@ -1,6 +1,6 @@
 grunt:
   npm:
-    - installed:
+    - installed
   require:
     - pkg: nodejs
 
