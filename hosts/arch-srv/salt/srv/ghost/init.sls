@@ -1,7 +1,8 @@
-grunt-cli:
-  npm.installed:
-    require:
-      - pkg: nodejs
+grunt:
+  npm:
+    - installed:
+  require:
+    - pkg: nodejs
 
 # ghost:
 #   git.latest:
