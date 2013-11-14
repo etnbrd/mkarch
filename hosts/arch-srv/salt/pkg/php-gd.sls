@@ -1,2 +1,0 @@
-php-gd:
-  pkg.latest
