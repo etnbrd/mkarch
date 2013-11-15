@@ -8,8 +8,10 @@ thinkup:
     - watch:
       - git: thinkup
   require:
+    - pkg: nginx
+    - pkg: php-fpm
     - pkg: php-gd
-    - pkg: mari
+    - pkg: mariadb
   mysql_user.present:
     - host: localhost
     - password: {{ salt['pillar.get']('mariadb_user_pw') }}
