@@ -10,3 +10,4 @@ base:
     - pkg.scm_breeze
     - srv.thinkup
     - srv.ghost
+    - srv.buddycloud
