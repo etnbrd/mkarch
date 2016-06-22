@@ -1,3 +1,7 @@
+This repo contains all the scripts and confiration files to setup my machines.
+mkarch are the scripts to setup a basic machine. They are pretty old, and unreliable.
+hosts are the salt configuration scripts to setup the machines after the basic install.
+
 # mkarch
 
 mkarch is a set of scripts I use to automate the setup of my archs.
@@ -8,3 +12,12 @@ the one-liner :
 About zsh :  
 zsh is the default shell in arch, that's why I used it.
 However, the scripts should be fully compatible with bash if one replace the indirect variable reference syntax in utils.sh from `${(P)2}` (zsh syntax) to `${!2}` (bash syntax)
+
+# Salt
+
+To setup a machine after the basic install.
+
+- install git and salt
+    + `pacman git salt-raet`
+- clone this repo into your machine
+- launch the configuration with 
