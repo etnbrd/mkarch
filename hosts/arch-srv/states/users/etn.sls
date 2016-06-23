@@ -3,7 +3,7 @@ etn:
     - fullname: Etienne Brodu
     - shell: /bin/zsh
     - home: /home/etn
-    - password: {{ salt['pillar.get']('user_pw') }}
+    - password: {{ salt['pillar.get']('etn.passwd') }}
     - enforce_password: false
     - groups:
       - wheel
@@ -14,7 +14,7 @@ etn:
 /home/etn/.ssh/authorized_keys:
   file.managed:
     - source: https://github.com/etnbrd.keys
-    - makedirs: true
+    - makedirs: True
     - user: etn
     - group: etn
     - mode: 700
@@ -39,8 +39,24 @@ etn:
 git@github.com:etnbrd/dotfiles.git:
   git.latest:
     - target: /home/etn/.dotfiles
-    - submodules: true
+    - submodules: True
     - user: etn
     - identity: /home/etn/.ssh/id_rsa
     - require:
       - /home/etn/.ssh/id_rsa: file.managed
+
+git@github.com:etnbrd/mkarch.git:
+  git.latest:
+    - target: /home/etn/.mkarch
+    - submodules: True
+    - user: etn
+    - identity: /home/etn/.ssh/id_rsa
+    - require:
+      - /home/etn/.ssh/id_rsa: file.managed
+
+/home/etn/.mkarch:
+  - file.symlink:
+    - target: /srv/salt
+    - force: True
+    - require: 
+      - git@github.com:etnbrd/mkarch.git: git.latest

@@ -5,4 +5,4 @@ file_roots:
 
 pillar_roots:
   base:
-    - /srv/pillar
+    - /srv/salt/credentials

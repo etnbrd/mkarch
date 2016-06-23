@@ -1,19 +1,15 @@
 This repo contains all the scripts and confiration files to setup my machines.
-mkarch are the scripts to setup a basic machine. They are pretty old, and unreliable.
-hosts are the salt configuration scripts to setup the machines after the basic install.
+
+`mkarch` are the scripts for the very first step to setup a basic machine.
+
+`hosts` are the salt configurations to setup the machines after the basic install.
 
 # mkarch
 
 mkarch is a set of scripts I use to automate the setup of my archs.
+They are pretty old and unreliable. I need to update them.
 
-the one-liner :  
-`zsh <(wget https://raw.github.com/gravitezero/mkarch/master/main.sh -qO -)`
-
-About zsh :  
-zsh is the default shell in arch, that's why I used it.
-However, the scripts should be fully compatible with bash if one replace the indirect variable reference syntax in utils.sh from `${(P)2}` (zsh syntax) to `${!2}` (bash syntax)
-
-# Salt
+# salt
 
 To setup a machine after the basic install.
 
@@ -21,7 +17,7 @@ To setup a machine after the basic install.
 # install git and salt
 pacman git salt-raet
 
-# clone this repo into your machine
+# clone this repo onto your machine
 git clone https://github.com/etnbrd/mkarch.git
 cd mkarch
 
@@ -37,7 +33,6 @@ vi .localrc
 cp -r hosts/arch-srv /srv/salt/
 
 # deploy credentials
-cp ... /srv/pillar
 cp ... /srv/salt/credentials
 
 # launch the salt command
