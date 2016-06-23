@@ -59,7 +59,7 @@ git@github.com:etnbrd/mkarch.git:
       - file: /home/etn/.ssh/id_rsa
 
 credentials:
-  file.managed:
+  file.recurse:
     - name: /home/etn/.mkarch/hosts/arch-srv/credentials
     - source: /srv/salt/credentials
 
