@@ -71,7 +71,7 @@ credentials:
 
 /srv/salt:
   file.symlink:
-    - target: /home/etn/.mkarch
+    - target: /home/etn/.mkarch/hosts/arch-srv
     - force: True
     - require:
       - git: git@github.com:etnbrd/mkarch.git
