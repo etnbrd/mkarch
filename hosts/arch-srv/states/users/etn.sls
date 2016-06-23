@@ -58,10 +58,13 @@ git@github.com:etnbrd/mkarch.git:
     - require:
       - file: /home/etn/.ssh/id_rsa
 
+# credentials:
+#   file.recurse:
+#     - name: /home/etn/.mkarch/hosts/arch-srv/credentials
+#     - source: /srv/salt/credentials
 credentials:
-  file.recurse:
-    - name: /home/etn/.mkarch/hosts/arch-srv/credentials
-    - source: /srv/salt/credentials
+  cmd.run:
+    - name: rsync -r /srv/salt/credentials /home/etn/.mkarch/hosts/arch-srv/credentials
 
 /srv/salt:
   file.symlink:
@@ -70,4 +73,6 @@ credentials:
     - require:
       - git: git@github.com:etnbrd/mkarch.git
       - file: credentials
+      - pkg: rsync
+
 
