@@ -1,6 +1,6 @@
 include:
-  - etn
-  - known_hosts
+  - .etn
+  - .known_hosts
 
 /etc/sudoers:
   file.managed:
