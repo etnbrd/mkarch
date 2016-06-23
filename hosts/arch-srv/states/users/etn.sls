@@ -42,8 +42,7 @@ git@github.com:etnbrd/dotfiles.git:
     - submodules: True
     - user: etn
     - identity: /home/etn/.ssh/id_rsa
-    - require:
-      - /home/etn/.ssh/id_rsa: file.managed
+    - require.file: /home/etn/.ssh/id_rsa
 
 git@github.com:etnbrd/mkarch.git:
   git.latest:
@@ -51,12 +50,11 @@ git@github.com:etnbrd/mkarch.git:
     - submodules: True
     - user: etn
     - identity: /home/etn/.ssh/id_rsa
-    - require:
-      - /home/etn/.ssh/id_rsa: file.managed
+    - require.file: /home/etn/.ssh/id_rsa
 
 /home/etn/.mkarch:
-  - file.symlink:
+  file.symlink:
     - target: /srv/salt
     - force: True
-    - require: 
-      - git@github.com:etnbrd/mkarch.git: git.latest
+    - require.git: git@github.com:etnbrd/mkarch.git
+
