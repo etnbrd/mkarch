@@ -1,0 +1,3 @@
+# The tag allows you to select only parts of the dotfiles to install on this machine.
+
+export TAGS='arch,srv'
