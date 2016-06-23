@@ -58,10 +58,16 @@ git@github.com:etnbrd/mkarch.git:
     - require:
       - file: /home/etn/.ssh/id_rsa
 
+credentials:
+  file.managed:
+    - name: /home/etn/.mkarch/hosts/arch-srv/credentials
+    - source: /srv/salt/credentials
+
 /srv/salt:
   file.symlink:
     - target: /home/etn/.mkarch
     - force: True
     - require:
       - git: git@github.com:etnbrd/mkarch.git
+      - file: credentials
 
