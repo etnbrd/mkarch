@@ -17,7 +17,7 @@ To setup a machine after the basic install.
 
 ```
 # install git and salt
-pacman git salt-raet
+pacman -Suy git salt-raet
 
 # clone this repo onto your machine
 git clone https://github.com/etnbrd/mkarch.git
@@ -29,7 +29,7 @@ cp hosts/minion /etc/salt/
 #sed -i "s/#*\(file_client *: \).*/\1local/" minion
 
 # Modify the .localrc file.
-vi hosts/arch-srv/.localrc
+vi hosts/arch-srv/config/.localrc
 
 # deploy credentials
 cp ... hosts/arch-srv/credentials
@@ -49,6 +49,14 @@ salt-call --local state.highstate
 
 # bootstrap
 .dotfiles/bin/bootstrap
+
+# verify password
+sudo id
+
+# restart sshd to remove root login
+systemctl restart sshd
+
+# exit and reconnect for changes to take effect
 exit
 
 ```
