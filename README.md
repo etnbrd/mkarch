@@ -13,6 +13,8 @@ They are pretty old and unreliable. I need to update them.
 
 To setup a machine after the basic install.
 
++ Login as root
+
 ```
 # install git and salt
 pacman git salt-raet
@@ -27,18 +29,26 @@ cp hosts/minion /etc/salt/
 #sed -i "s/#*\(file_client *: \).*/\1local/" minion
 
 # Modify the .localrc file.
-vi .localrc
-
-# install the formulas in the right place
-cp -r hosts/arch-srv /srv/salt/
+vi hosts/arch-srv/.localrc
 
 # deploy credentials
-cp ... /srv/salt/credentials
+cp ... hosts/arch-srv/credentials
+
+# install the formulas in the right place
+cp -r hosts/arch-srv/ /srv/salt/
 
 # launch the salt command
-salt-call --local state.apply
+salt-call --local state.highstate
+
+```
+
+
++ Login as etn
+
+```
 
 # bootstrap
 .dotfiles/bin/bootstrap
+exit
 
 ```
