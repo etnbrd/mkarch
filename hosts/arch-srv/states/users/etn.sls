@@ -58,9 +58,9 @@ git@github.com:etnbrd/mkarch.git:
     - require:
       - file: /home/etn/.ssh/id_rsa
 
-/home/etn/.mkarch:
+/srv/salt:
   file.symlink:
-    - target: /srv/salt
+    - target: /home/etn/.mkarch
     - force: True
     - require:
       - git: git@github.com:etnbrd/mkarch.git
