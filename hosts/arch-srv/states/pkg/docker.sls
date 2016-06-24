@@ -1,5 +1,5 @@
 docker package:
-  - pkg.latest:
+  pkg.latest:
     - name: docker
 
 docker service:
