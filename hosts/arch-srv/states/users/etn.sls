@@ -8,6 +8,7 @@ etn:
     - groups:
       - wheel
       - storage
+      - docker
     - require:
       - pkg: zsh
 
