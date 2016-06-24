@@ -1,0 +1,2 @@
+docker:
+  pkg.latest
