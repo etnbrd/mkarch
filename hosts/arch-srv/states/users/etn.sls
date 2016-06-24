@@ -64,7 +64,7 @@ git@github.com:etnbrd/mkarch.git:
 #     - source: /srv/salt/credentials
 credentials:
   cmd.run:
-    - name: rsync -r /srv/salt/credentials /home/etn/.mkarch/hosts/arch-srv/credentials
+    - name: rsync -r /srv/salt/credentials/* /home/etn/.mkarch/hosts/arch-srv/credentials/
     - require: 
       - git: git@github.com:etnbrd/mkarch.git
       - pkg: rsync
