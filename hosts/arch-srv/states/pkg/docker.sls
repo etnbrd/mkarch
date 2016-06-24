@@ -1,6 +1,8 @@
 docker:
   - pkg.latest
-  - service.running:
+
+docker:
+  service.running:
     - enable: True
     - reload: True
     - watch:
