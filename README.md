@@ -48,7 +48,7 @@ salt-call --local state.highstate
 ```
 
 # bootstrap
-.dotfiles/bin/bootstrap
+./.dotfiles/bin/bootstrap
 
 # verify password
 sudo id
